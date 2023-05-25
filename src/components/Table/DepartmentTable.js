@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
+import { DepartmentDummy } from "../../pages/DepartmentManage/DepartmentDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
 
@@ -77,36 +77,33 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-export const CompanyTable = () => {
+export const DepartmentTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = DepartmentDummy.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   const renderTableRows = () => {
-    return currentItems.map((companydata) => (
-      <tr key={companydata.company.companyId}>
-        <td>{companydata.company.companyId}</td>
-        <td>{companydata.company.companyName}</td>
-        <td>{companydata.company.manager}</td>
-        <td>{companydata.company.contact}</td>
-        <td>{companydata.company.email}</td>
-        <td>{companydata.company.companyAddress}</td>
-        <td>{companydata.company.contractType}</td>
-        <td>{companydata.company.contractDate}</td>
-        <td>{companydata.company.expirationDate}</td>
-        <td>{companydata.company.status}</td>
+    return currentItems.map((department) => (
+      <tr key={department.department.departmentId}>
+        <td>{department.department.departmentId}</td>
+        <td>{department.department.departmentName}</td>
+        <td>{department.department.manager}</td>
+        <td>{department.department.registDate}</td>
+        <td>{department.department.changeDate}</td>
+        <td>{department.department.status}</td>
+        <td>{department.department.modifier}</td>
       </tr>
     ));
   };
 
   const renderPaginationButtons = () => {
-    const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
+    const pageNumbers = Math.ceil(DepartmentDummy.length / itemsPerPage);
 
     const handlePrevPage = () => {
       if (currentPage > 1) {
@@ -143,15 +140,12 @@ export const CompanyTable = () => {
         <thead>
           <tr>
             <th>번호</th>
-            <th>회사명</th>
-            <th>담당자</th>
-            <th>연락처</th>
-            <th>이메일</th>
-            <th>주소</th>
-            <th>계약형태</th>
-            <th>계약일</th>
-            <th>만료일</th>
+            <th>부서명</th>
             <th>상태</th>
+            <th>등록일시</th>
+            <th>등록자</th>
+            <th>변경일시</th>
+            <th>수정자</th>
           </tr>
         </thead>
         <tbody>

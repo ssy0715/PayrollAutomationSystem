@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,7 +10,7 @@ const SWrapper = styled.div`
   justify-content: center;
   width: 15%;
   height: 100vh;
-  background-color: rgb(52, 152, 219);
+  background-color: #548AFF;
   box-shadow: 2px 0 2.94px 0.06px rgba(4, 26, 55, 0.16);
 
 `
@@ -24,18 +24,27 @@ const SMenuContainer = styled.div`
   color: white;
   font-weight: 500;
 
+  & > div {
+    cursor: pointer;
+    
+    &:hover{  
+      color : ${({theme}) => theme.colors.blue010};
+    }
+  }
+
 `
 
 
 
 const SideNav = () => {
 
+  const navigate = useNavigate();
 
   return (
 
     <SWrapper>
       <SMenuContainer>
-        <div>부서관리</div>
+        <div onClick={() => navigate("/home/depart")}>부서관리</div>
         <div>사원정보관리</div>
         <div>직원명부</div>
         <div>근태관리</div>

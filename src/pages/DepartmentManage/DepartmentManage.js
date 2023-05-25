@@ -5,7 +5,7 @@ import {BsArrowBarRight} from 'react-icons/bs';
 // import { CompanyDummy, companyColumnData } from "./CompanyDummy";
 import { useState } from "react";
 // import { useTable } from "react-table";
-import { CompanyTable } from "../../components/Table/CompanyTable";
+import { DepartmentTable } from "../../components/Table/DepartmentTable";
 
 
 const SHeader = styled.div`
@@ -156,7 +156,7 @@ const SCompanyTable = styled.div`
   border-radius: 5px;
 `
 
-const CompanyManage = () => {
+const DepartmentManage = () => {
 
   return (
   <SWrapper>
@@ -178,22 +178,18 @@ const CompanyManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>회사정보</div>
+          <div>부서관리</div>
         </SCategory>
         <SContentHeader>
-          <div>회사명 : </div>
-          <input placeholder="내용을 입력해주세요" />
-          <div>등록일 : </div>
-          <input size={10} type="date" />
-          <div>~</div>
-          <input size={10} type="date" />
+          <div>부서명 : </div>
+          <input size={50} placeholder="내용을 입력해주세요" />
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
             <SNewButton>신규</SNewButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <CompanyTable/>
+          <DepartmentTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
@@ -202,4 +198,4 @@ const CompanyManage = () => {
 
 }
 
-export default CompanyManage;
+export default DepartmentManage;

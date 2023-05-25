@@ -1,6 +1,6 @@
 import { HomeRouter } from "./Routers";
 import { SharedLayout, SideNav } from "./components";
-import { Home, Login, CompanyManage } from "./pages";
+import { Home, Login, CompanyManage, DepartmentManage } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home/com" element={<CompanyManage />}/>
+            <Route path="/home/depart" element={<DepartmentManage />}/>
             {/* <Route path="/Home/*" element={<HomeRouter />} /> */}
           {/* </Route> */}
         </Routes>
