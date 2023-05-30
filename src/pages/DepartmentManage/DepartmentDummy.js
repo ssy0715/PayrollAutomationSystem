@@ -1,6 +1,3 @@
-// import { useMemo } from "react"
-// import { useTable } from "react-table";
-
 export const DepartmentDummy = [
   {
     department: {

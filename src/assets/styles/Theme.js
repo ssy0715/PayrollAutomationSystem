@@ -16,13 +16,12 @@ export const theme = {
     black400: "#707070",
     black500: "#161616",
 
+    //카테고리 헤더 색상
+    black110: "#7F7F7F",
+
+
     blue010: "#ECF0FF",
     blue090: "#548AFF",
-
-    orange010: "#FFF0C2",
-    orange025: "#FFE699",
-    orange075: "#FFDB70",
-    orange500: "#ffc107",
   },
 };
 

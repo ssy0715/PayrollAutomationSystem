@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -24,14 +25,6 @@ const SMenuContainer = styled.div`
   color: white;
   font-weight: 500;
 
-  & > div {
-    cursor: pointer;
-    
-    &:hover{  
-      color : ${({theme}) => theme.colors.blue010};
-    }
-  }
-
 `
 
 
@@ -44,7 +37,7 @@ const SideNav = () => {
 
     <SWrapper>
       <SMenuContainer>
-        <div onClick={() => navigate("/home/depart")}>부서관리</div>
+        <Link to="/home/depart">부서관리</Link>
         <div>사원정보관리</div>
         <div>직원명부</div>
         <div>근태관리</div>

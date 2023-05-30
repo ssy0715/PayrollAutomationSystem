@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
@@ -39,9 +40,13 @@ const TableContainer = styled.div`
   tr > td {
     text-align: center;
     font-size: 1em;
-    font-weight: 200;
+    font-weight: 200;u
     color: rgb(40, 40, 40);
+    cursor: pointer;
+    hover:
   }
+
+  
 
 `;
 
@@ -78,11 +83,20 @@ const PaginationButton = styled.button`
 `;
 
 export const CompanyTable = () => {
+  const navigate = useNavigate();
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
+
+  const [tests, setTest] = useState( [] );
+  useEffect( () =>{
+    fetch('http://127.0.0.1:8000/test/')
+      .then( res => res.json())
+      .then( data => console.log(data))
+  }, [])
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -92,7 +106,7 @@ export const CompanyTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td>{companydata.company.companyName}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.companyName}</td>
         <td>{companydata.company.manager}</td>
         <td>{companydata.company.contact}</td>
         <td>{companydata.company.email}</td>

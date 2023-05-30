@@ -4,6 +4,7 @@ import { DepartmentDummy } from "../../pages/DepartmentManage/DepartmentDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
 
+
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;

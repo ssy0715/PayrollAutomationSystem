@@ -24,9 +24,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  :root {
-    --toastify-toast-width: 450px;
-  }
+  // :root {
+  //   --toastify-toast-width: 450px;
+  // }
 
   html,
   body {
@@ -47,11 +47,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: black;
+    color: white;
     text-decoration: none;
 
     &:hover, &:active {
-      color: black;
+      color: ${({theme}) => theme.colors.blue010};
       text-decoration: none;
     }
   }

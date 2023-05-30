@@ -57,7 +57,7 @@ const SCategory = styled.div`
   padding: 10px 0px;
   font-size: 28px;
   font-weight: 600;
-  color: rgb(127, 127, 127);
+  color: ${({theme}) => theme.colors.black110};
 
 `
 
@@ -107,7 +107,6 @@ const SCompanyTable = styled.div`
   width: 90%;
   height: 80%;
   margin: 10px;
-  // padding: 0px 20px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
