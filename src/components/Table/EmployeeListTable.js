@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { DepartmentDummy } from "../../pages/DepartmentManage/DepartmentDummy";
+import { useNavigate } from "react-router-dom";
+import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
-
 
 
 const TableContainer = styled.div`
@@ -40,9 +40,13 @@ const TableContainer = styled.div`
   tr > td {
     text-align: center;
     font-size: 1em;
-    font-weight: 200;
+    font-weight: 200;u
     color: rgb(40, 40, 40);
+    cursor: pointer;
+    hover:
   }
+
+  
 
 `;
 
@@ -78,12 +82,14 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-export const DepartmentTable = () => {
+const EmployeeListTable = () => {
+  const navigate = useNavigate();
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = DepartmentDummy.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
 
   const [tests, setTest] = useState( [] );
   useEffect( () =>{
@@ -92,27 +98,30 @@ export const DepartmentTable = () => {
       .then( data => console.log(data))
   }, [])
 
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   const renderTableRows = () => {
-    return currentItems.map((department) => (
-      <tr key={department.department.departmentId}>
-        <td>{department.department.departmentId}</td>
-        <td>{department.department.departmentName}</td>
-        <td>{department.department.manager}</td>
-        <td>{department.department.registDate}</td>
-        <td>{department.department.changeDate}</td>
-        <td>{department.department.status}</td>
-        <td>{department.department.modifier}</td>
+    return currentItems.map((companydata) => (
+      <tr key={companydata.company.companyId}>
+        <td>{companydata.company.companyId}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>
+          {companydata.company.companyName}
+        </td>
+        <td>{companydata.company.manager || ""}</td>
+        <td>{companydata.company.contact || ""}</td>
+        <td>{companydata.company.email || ""}</td>
+        <td>{companydata.company.companyAddress || ""}</td>
+        <td>{companydata.company.contractType || ""}</td>
+        <td>{companydata.company.contractDate || ""}</td>
+        <td>{companydata.company.expirationDate || ""}</td>
+        <td>{companydata.company.status || ""}</td>
       </tr>
     ));
   };
-
   const renderPaginationButtons = () => {
-    const pageNumbers = Math.ceil(DepartmentDummy.length / itemsPerPage);
+    const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
 
     const handlePrevPage = () => {
       if (currentPage > 1) {
@@ -149,12 +158,23 @@ export const DepartmentTable = () => {
         <thead>
           <tr>
             <th>번호</th>
-            <th>부서명</th>
-            <th>상태</th>
-            <th>등록일시</th>
-            <th>등록자</th>
-            <th>변경일시</th>
-            <th>수정자</th>
+            <th>사원번호</th>
+            <th>사원명</th>
+            <th>주민번호</th>
+            <th>부서</th>
+            <th>직책</th>
+            <th>입사일</th>
+            <th>재직기간</th>
+            <th>입사일</th>
+            <th>재직기간</th>
+            <th>고용형태</th>
+            <th>급여형태</th>
+            <th>직급</th>
+            <th>은행</th>
+            <th>계좌번호</th>
+            <th>주소</th>
+            <th>연락처</th>
+            <th>이메일</th>
           </tr>
         </thead>
         <tbody>
@@ -173,4 +193,7 @@ export const DepartmentTable = () => {
                   </TableContainer>
                 );
               };
+
+
+export default EmployeeListTable;
               
