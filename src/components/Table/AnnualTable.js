@@ -8,7 +8,7 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 
   width: 90%;
   height: 90%;
@@ -82,7 +82,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const EmployeeTable = () => {
+const AnnualTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,16 +106,20 @@ const EmployeeTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
+        <td>{"2021-02-16"}</td>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
-        <td>{"사원"}</td>
-        <td>{"내국인"}</td>
-        <td>{"남자"}</td>
         <td>{"관리부"}</td>
-        <td>{"계약직"}</td>
-        <td>{companydata.company.contractDate}</td>
-        <td>{"재직"}</td>
-        <td>{companydata.company.expirationDate}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td>{"내국인"}</td>
+        <td>{"평일"}</td>
+        <td>{"남자"}</td>
+        <td>{"00:00:00AM"}</td>
+        <td>{"00:00:00PM"}</td>
+        <td>{"출근"}</td>
+        <td>{"퇴근"}</td>
+        <td>{"00분"}</td>
+        <td>{"00분"}</td>
+        <td>{""}</td>
       </tr>
     ));
   };
@@ -157,17 +161,43 @@ const EmployeeTable = () => {
       <table>
         <thead>
           <tr>
-            <th>번호</th>
             <th>사원번호</th>
-            <th>사원명</th>
             <th>직책</th>
-            <th>외국인여부</th>
-            <th>성별</th>
-            <th>부서명</th>
-            <th>고용형태</th>
-            <th>입사일자</th>
-            <th>재직상태</th>
-            <th>퇴사일자</th>
+            <th>성명</th>
+            <th>입사일</th>
+            <th>퇴사일</th>
+            <th>발생</th>
+            {/* 월별 시작 */}
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            <th>발생</th>
+            <th>사용</th>
+            {/* 합계 */}
+            <th>총발생</th>
+            <th>총사용</th>
+            <th>적치</th>
+            {/* 연초 */}
+            <th>이월연차</th>
           </tr>
         </thead>
         <tbody>
@@ -188,5 +218,5 @@ const EmployeeTable = () => {
               };
 
 
-export default EmployeeTable;
+export default AnnualTable;
               

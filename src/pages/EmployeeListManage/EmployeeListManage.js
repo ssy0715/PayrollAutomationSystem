@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import { EmployeeListTable } from "../../components";
 import { Header } from "../../components";
+import { DepartmentTable } from "../../components/Table/DepartmentTable";
 
 
 const SWrapper = styled.div`
@@ -41,8 +42,8 @@ const SContentHeader = styled.div`
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 
-  font-size: 1em;
-
+  font-size: 1.2em;
+  
 & > input {
   border: none;
   font-size: 1em;
@@ -153,6 +154,7 @@ const EmployeeListManage = () => {
         </SContentHeader>
         <SCompanyTable>
           <EmployeeListTable/>
+          {/* <DepartmentTable/> */}
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

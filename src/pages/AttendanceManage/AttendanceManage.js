@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import { AttendanceTable } from "../../components";
 import { Header } from "../../components";
 
 
@@ -41,7 +41,7 @@ const SContentHeader = styled.div`
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 
-  font-size: 1.1em;
+  font-size: 1.2em;
 
 & > input {
   border: none;
@@ -170,7 +170,7 @@ const AttendanceManage = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <AttendanceTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

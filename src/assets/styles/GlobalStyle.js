@@ -47,12 +47,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: white;
+    // color: white;
     text-decoration: none;
 
     &:hover, &:active {
-      color: ${({theme}) => theme.colors.blue010};
+      color: ${({theme}) => theme.colors.black110};
       text-decoration: none;
+      cursor: pointer;
     }
   }
 

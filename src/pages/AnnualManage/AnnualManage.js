@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import {AnnualTable} from "../../components"
 import { Header } from "../../components";
 
 
@@ -41,7 +41,7 @@ const SContentHeader = styled.div`
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 
-  font-size: 1em;
+  font-size: 1.2em;
 
 & > input {
   border: none;
@@ -125,15 +125,26 @@ const SPrintButton = styled.button`
 
 const SCompanyTable = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
   height: 80%;
-  margin: 10px;
+  margin: 8px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+`
+
+const SInfoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  gap: 15%;
+  padding-top: 5%;
+  font-weight: 600;
+  color: ${({theme}) => theme.colors.blue090}
 `
 
 const AnnualManage = () => {
@@ -159,7 +170,11 @@ const AnnualManage = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <SInfoContainer>
+            <div>※ 연차갯수는 1년차에 매월 발생한 연차를 2년차 말일까지 사용할 수 있다는 노사합의를 전제로 합니다.</div>
+            <div>※ 입사월일기준 전후</div>
+          </SInfoContainer>
+          <AnnualTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

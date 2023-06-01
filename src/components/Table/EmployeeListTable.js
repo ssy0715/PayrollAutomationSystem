@@ -43,7 +43,9 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    hover:
+    :hover {
+      color: ${({theme}) => (theme.colors.blue090)}
+    }
   }
 
   
@@ -102,47 +104,57 @@ const EmployeeListTable = () => {
     setCurrentPage(pageNumber);
   };
 
+  const showThisTable = () => {
+    console.log('테이블 출력되는중');
+  }
+
+  
   const renderTableRows = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>
-          {companydata.company.companyName}
-        </td>
-        <td>{companydata.company.manager || ""}</td>
-        <td>{companydata.company.contact || ""}</td>
-        <td>{companydata.company.email || ""}</td>
-        <td>{companydata.company.companyAddress || ""}</td>
-        <td>{companydata.company.contractType || ""}</td>
-        <td>{companydata.company.contractDate || ""}</td>
-        <td>{companydata.company.expirationDate || ""}</td>
-        <td>{companydata.company.status || ""}</td>
+        <td>{companydata.company.companyId}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td>{"831234-1234567"}</td>
+        <td>{"관리부"}</td>
+        <td>{"사원"}</td>
+        <td>{"2013-01-01"}</td>
+        <td>{""}</td>
+        <td>{"계약직"}</td>
+        <td>{"월급여"}</td>
+        <td>{"사원"}</td>
+        <td>{"기업은행"}</td>
+        <td>{"123456-01-123456"}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
       </tr>
     ));
   };
+  
   const renderPaginationButtons = () => {
     const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
-
+    
     const handlePrevPage = () => {
       if (currentPage > 1) {
         setCurrentPage(currentPage - 1);
       }
     };
-
+    
     const handleNextPage = () => {
       if (currentPage < pageNumbers) {
         setCurrentPage(currentPage + 1);
       }
     };
-
+    
     return (
       <>
         <PaginationButton onClick={handlePrevPage}><IoIosArrowDropleftCircle size={45}/></PaginationButton>
         {Array.from({ length: pageNumbers }, (_, index) => (
           <PaginationButton
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            active={index + 1 === currentPage}
+          key={index + 1}
+          onClick={() => handlePageChange(index + 1)}
+          active={index + 1 === currentPage}
           >
             {index + 1}
           </PaginationButton>
@@ -151,7 +163,7 @@ const EmployeeListTable = () => {
       </>
     );
   };
-
+  
   return (
     <TableContainer>
       <table>
@@ -163,9 +175,7 @@ const EmployeeListTable = () => {
             <th>주민번호</th>
             <th>부서</th>
             <th>직책</th>
-            <th>입사일</th>
-            <th>재직기간</th>
-            <th>입사일</th>
+            <th>입사일자</th>
             <th>재직기간</th>
             <th>고용형태</th>
             <th>급여형태</th>
@@ -174,14 +184,14 @@ const EmployeeListTable = () => {
             <th>계좌번호</th>
             <th>주소</th>
             <th>연락처</th>
-            <th>이메일</th>
+            {/* <th>이메일</th> */}
           </tr>
         </thead>
         <tbody>
           {currentItems.length > 0 ? (
             renderTableRows()
-          ) : (
-            <tr>
+            ) : (
+              <tr>
               <SNoDataMsg colSpan="10">조회할 항목이 없습니다.</SNoDataMsg>
             </tr>
                       )}
@@ -196,4 +206,3 @@ const EmployeeListTable = () => {
 
 
 export default EmployeeListTable;
-              

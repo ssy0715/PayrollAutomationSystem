@@ -100,12 +100,15 @@ export const DepartmentTable = () => {
   const renderTableRows = () => {
     return currentItems.map((department) => (
       <tr key={department.department.departmentId}>
+        <td>
+          <input type="checkbox"/>
+        </td>
         <td>{department.department.departmentId}</td>
-        <td>{department.department.departmentName}</td>
-        <td>{department.department.manager}</td>
+        <td><a>{department.department.departmentName}</a></td>
+        <td>{"정상"}</td>
         <td>{department.department.registDate}</td>
+        <td>{department.department.modifier}</td>
         <td>{department.department.changeDate}</td>
-        <td>{department.department.status}</td>
         <td>{department.department.modifier}</td>
       </tr>
     ));
@@ -148,6 +151,7 @@ export const DepartmentTable = () => {
       <table>
         <thead>
           <tr>
+            <th>선택</th>
             <th>번호</th>
             <th>부서명</th>
             <th>상태</th>

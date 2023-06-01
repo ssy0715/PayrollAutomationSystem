@@ -29,25 +29,34 @@ const STitle = styled.h2`
   display: flex;
   justify-content: center;
   align-items: justify-content: space-between;
-`
+  font-weight: 800;
+  `
 
 const SInputContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: gray;
-
-`
-
-const SInputWrapper = styled.div`
+  gap: 5%;
+  
+  height: 60%;
+  
+  `
+  
+  const SInputs = styled.div`
+  display: flex;
+  flex-direction: column;
 
 `
 const BlueButton = styled.div`
-  width: 50px;
-  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50px;
+  min-height: 50px;
   background-color: rgb(52, 152, 219);
   border-radius: 3px;
+  color: white;
+  font-size: 0.8rem;
 `
 
 
@@ -57,13 +66,13 @@ const Login = () => {
     <SWrapper>
       <SContainer>
         <STitle>Payroll Automaion System</STitle>
-        <SInputWrapper>
           <SInputContainer>
-            <IconInput placeholder={'아이디'} />
-            <IconInput placeholder={'비밀번호'} />
+            <SInputs>
+              <IconInput placeholder={'아이디'} />
+              <IconInput placeholder={'비밀번호'} />
+            </SInputs>
+            <BlueButton>로그인</BlueButton>
           </SInputContainer>
-          <BlueButton />
-        </SInputWrapper>
       </SContainer>
     </SWrapper>
   );

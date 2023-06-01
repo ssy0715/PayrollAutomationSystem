@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaClock } from "react-icons/fa";
 import { HiDocumentText, HiDocumentDuplicate } from "react-icons/hi";
@@ -27,7 +26,7 @@ const SMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2.8rem;
+  gap: 2rem;
   font-size: 1.1em;
   color: white;
   font-weight: 500;
@@ -42,6 +41,11 @@ const SMenuContainer = styled.div`
     justify-content: center;
     text-align: center;
     gap: 0.5em;
+    color: white;
+    &:hover, &:active {
+      color: ${({theme}) => theme.colors.blue010};
+      text-decoration: none;
+    }
   }
 
 `
@@ -49,8 +53,6 @@ const SMenuContainer = styled.div`
 
 
 const SideNav = () => {
-
-  const navigate = useNavigate();
 
   return (
 
@@ -104,11 +106,11 @@ const SideNav = () => {
           <HiDocumentText size={30}/>
           <div>퇴직연금내역</div>
         </Link>
-        <Link to="">
+        <Link to="/home/insurunce">
           <HiDocumentDuplicate size={30} color="white"/>
           <div>보험적취내역</div>
         </Link>
-        <Link to="">
+        <Link to="/home/device">
           <TbDeviceMobileVibration size={30}/>
           <div>기기관리</div>
         </Link>

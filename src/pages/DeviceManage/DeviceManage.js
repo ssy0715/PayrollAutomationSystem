@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeTable from "../../components/Table/EmployeeTable";
+import EmployeeListTable from "../../components/Table/EmployeeTable";
 import { Header } from "../../components";
 
 
@@ -52,6 +52,13 @@ const SContentHeader = styled.div`
 
 `
 
+const SInputContainer = styled.div`
+  display: flex;
+  width: 100%;
+  min-width: 30%;
+  gap: 1.1em;
+`
+
 const SCategory = styled.div`
   width: 90%;
 
@@ -85,13 +92,28 @@ const SSerchButton = styled.button`
   }
 `
 
-const SNewButton = styled.button`
+const SOutButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;
   color: white;
   font-size: 0.8em;
-  background-color: ${({theme}) => theme.colors.blue090};
+  background-color: ${({theme}) => theme.colors.black110};
+  border-radius: 3px;
+  border: none;
+
+  &:hover{  
+    background-color : skyblue;
+  }
+
+`
+const SPrintButton = styled.button`
+  flex-wrap: wrap;
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-size: 0.8em;
+  background-color: ${({theme}) => theme.colors.black110};
   border-radius: 3px;
   border: none;
 
@@ -114,7 +136,7 @@ const SCompanyTable = styled.div`
   border-radius: 5px;
 `
 
-const EmployeeManage = () => {
+const DeviceManage = () => {
 
   return (
   <SWrapper>
@@ -123,41 +145,28 @@ const EmployeeManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>사원정보</div>
+          <div>비콘단말기 관리</div>
         </SCategory>
         <SContentHeader>
-          <div>부서명 : </div>
-          <select size={1}>
-            <option value="1">생산부</option>
-            <option value="2">인사부</option>
-            <option value="3">관리부</option>
-            <option value="4">경영부</option>
-          </select>
-          <div>사원명 : </div>
-          <input placeholder="" />
-          <div>외국인여부 : </div>
-          <select size={1}>
-            <option value="false">내국인</option>
-            <option value="true">외국인</option>
-          </select>
-          <div>고용형태 : </div>
-          <select size={1}>
-            <option value="1">상용직</option>
-            <option value="2">계약직</option>
-            <option value="3">일용직</option>
-          </select>
-          <div>재직여부 : </div>
-          <select size={1}>
-            <option value="false">내국인</option>
-            <option value="true">외국인</option>
-          </select>
+          <SInputContainer>
+            <div>설치위치 : </div>
+            <input size={20} type="text" />
+            <div>모델명 : </div>
+            <input size={20} type="text" />
+            <div>상태 : </div>
+            <select size={1}>
+              <option value="1">사용</option>
+              <option value="2">미사용</option>
+            </select>
+          </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SNewButton>신규</SNewButton>
+            <SOutButton>내보내기</SOutButton>
+            <SPrintButton>인쇄</SPrintButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeTable/>
+          <EmployeeListTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
@@ -166,4 +175,4 @@ const EmployeeManage = () => {
 
 }
 
-export default EmployeeManage;
+export default DeviceManage;

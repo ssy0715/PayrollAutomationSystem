@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeTable from "../../components/Table/EmployeeTable";
+import EmployeeListTable from "../../components/Table/EmployeeTable";
 import { Header } from "../../components";
 
 
@@ -33,7 +33,9 @@ const SContentHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 6%;
+  height: auto;
+  min-height: 6%;
+
   margin: 10px;
   padding: 0px 20px;
   gap: 10px;
@@ -41,7 +43,7 @@ const SContentHeader = styled.div`
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 
-  font-size: 1.2em;
+  font-size: 1.em;
 
 & > input {
   border: none;
@@ -50,6 +52,29 @@ const SContentHeader = styled.div`
 
 }
 
+`
+
+const SInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 30%;
+  gap: 0.3em;
+
+
+  div {
+    width: auto;
+    gap: 10px;
+  }
+`
+
+const SInputInnerContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-width: 30%;
+  gap: 0.5em;
 `
 
 const SCategory = styled.div`
@@ -85,13 +110,28 @@ const SSerchButton = styled.button`
   }
 `
 
-const SNewButton = styled.button`
+const SOutButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;
   color: white;
   font-size: 0.8em;
-  background-color: ${({theme}) => theme.colors.blue090};
+  background-color: ${({theme}) => theme.colors.black110};
+  border-radius: 3px;
+  border: none;
+
+  &:hover{  
+    background-color : skyblue;
+  }
+
+`
+const SPrintButton = styled.button`
+  flex-wrap: wrap;
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-size: 0.8em;
+  background-color: ${({theme}) => theme.colors.black110};
   border-radius: 3px;
   border: none;
 
@@ -114,7 +154,7 @@ const SCompanyTable = styled.div`
   border-radius: 5px;
 `
 
-const EmployeeManage = () => {
+const InsuranceClaim = () => {
 
   return (
   <SWrapper>
@@ -123,41 +163,35 @@ const EmployeeManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>사원정보</div>
+          <div>보험 및 세금 적취내역 조회</div>
         </SCategory>
         <SContentHeader>
-          <div>부서명 : </div>
-          <select size={1}>
-            <option value="1">생산부</option>
-            <option value="2">인사부</option>
-            <option value="3">관리부</option>
-            <option value="4">경영부</option>
-          </select>
-          <div>사원명 : </div>
-          <input placeholder="" />
-          <div>외국인여부 : </div>
-          <select size={1}>
-            <option value="false">내국인</option>
-            <option value="true">외국인</option>
-          </select>
-          <div>고용형태 : </div>
-          <select size={1}>
-            <option value="1">상용직</option>
-            <option value="2">계약직</option>
-            <option value="3">일용직</option>
-          </select>
-          <div>재직여부 : </div>
-          <select size={1}>
-            <option value="false">내국인</option>
-            <option value="true">외국인</option>
-          </select>
+          <SInputContainer>
+            <SInputInnerContainer>            
+              <div>검색년도 : </div>
+              <input size={200} type="date" />
+              <br></br>
+              <div>퇴직연금 종류</div>
+              <input id="1" type="checkbox" />
+              <div>국민연금</div>
+              <input id="2" type="checkbox"/>
+              <div>고용보험</div>
+              <input id="3" type="checkbox"/>
+              <div>건강보험,장기요양보험</div>
+              <input id="4" type="checkbox"/>
+              <div>정산항목</div>
+              <input id="5" type="checkbox"/>
+              <div>소득세</div>
+            </SInputInnerContainer>
+          </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SNewButton>신규</SNewButton>
+            <SOutButton>내보내기</SOutButton>
+            <SPrintButton>인쇄</SPrintButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeTable/>
+          <EmployeeListTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
@@ -166,4 +200,4 @@ const EmployeeManage = () => {
 
 }
 
-export default EmployeeManage;
+export default InsuranceClaim;

@@ -14,6 +14,8 @@ import { Home,
   TransferHistory,
   DepartureInsurance,
   RetirePension,
+  InsuranceClaim,
+  DeviceManage,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -39,7 +41,8 @@ function App() {
             <Route path="/home/transferhistory" element={<TransferHistory />} />
             <Route path="/home/departins" element={<DepartureInsurance />} />
             <Route path="/home/retire" element={<RetirePension />} />
-
+            <Route path="/home/insurunce" element={<InsuranceClaim />} />
+            <Route path="/home/device" element={<DeviceManage />} />
 
             <Route path="/home/com/:companyId" element={<CompanyDetail />} />
           {/* </Route> */}

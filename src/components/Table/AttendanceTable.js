@@ -82,7 +82,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const EmployeeTable = () => {
+const AttendanceTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,16 +106,20 @@ const EmployeeTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
+        <td>{"2021-02-16"}</td>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
-        <td>{"사원"}</td>
-        <td>{"내국인"}</td>
-        <td>{"남자"}</td>
         <td>{"관리부"}</td>
-        <td>{"계약직"}</td>
-        <td>{companydata.company.contractDate}</td>
-        <td>{"재직"}</td>
-        <td>{companydata.company.expirationDate}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td>{"내국인"}</td>
+        <td>{"평일"}</td>
+        <td>{"남자"}</td>
+        <td>{"00:00:00AM"}</td>
+        <td>{"00:00:00PM"}</td>
+        <td>{"출근"}</td>
+        <td>{"퇴근"}</td>
+        <td>{"00분"}</td>
+        <td>{"00분"}</td>
+        <td>{""}</td>
       </tr>
     ));
   };
@@ -158,16 +162,20 @@ const EmployeeTable = () => {
         <thead>
           <tr>
             <th>번호</th>
+            <th>근무일자</th>
             <th>사원번호</th>
-            <th>사원명</th>
-            <th>직책</th>
-            <th>외국인여부</th>
-            <th>성별</th>
             <th>부서명</th>
-            <th>고용형태</th>
-            <th>입사일자</th>
-            <th>재직상태</th>
-            <th>퇴사일자</th>
+            <th>사원명</th>
+            <th>국적</th>
+            <th>근무스케쥴</th>
+            <th>성별</th>
+            <th>출근시각</th>
+            <th>퇴근시각</th>
+            <th>출근판정</th>
+            <th>퇴근판정</th>
+            <th>연장근무</th>
+            <th>실제근무</th>
+            <th>비고</th>
           </tr>
         </thead>
         <tbody>
@@ -188,5 +196,5 @@ const EmployeeTable = () => {
               };
 
 
-export default EmployeeTable;
+export default AttendanceTable;
               
