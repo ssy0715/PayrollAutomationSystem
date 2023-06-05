@@ -22,7 +22,7 @@ const SContentContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
+  height: calc(100% - 60px);
   padding: 30px;
   width: 100%;
 
@@ -37,7 +37,7 @@ const SContentHeader = styled.div`
   min-height: 6%;
 
   margin: 10px;
-  padding: 0px 20px;
+  padding: 10px 20px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);

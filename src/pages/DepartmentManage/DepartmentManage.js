@@ -9,11 +9,12 @@ const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-`
-
-const SContentWrapper = styled.div`
+  `
+  
+  const SContentWrapper = styled.div`
   display: flex;
   width: 100%;
+
   background-color: #f8f9fa;
 `
 
@@ -22,7 +23,7 @@ const SContentContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
+  height: calc(100% - 60px);
   padding: 30px;
   width: 100%;
 
@@ -35,7 +36,7 @@ const SContentHeader = styled.div`
   width: 90%;
   height: 6%;
   margin: 10px;
-  padding: 0px 20px;
+  padding: 10px 20px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
@@ -53,6 +54,7 @@ const SContentHeader = styled.div`
 
 const SCategory = styled.div`
   width: 90%;
+  height: auto--;
 
   padding: 10px 0px;
   font-size: 28px;

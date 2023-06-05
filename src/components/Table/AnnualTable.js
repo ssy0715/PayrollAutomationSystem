@@ -13,10 +13,12 @@ const TableContainer = styled.div`
   width: 90%;
   height: 90%;
 
-  font-size: 1.1em;
+  font-size: 0.7em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
+  overflow-x: scroll;
+  overflow-y: hidden;
 
   margin: 20px 10px;
 
@@ -35,6 +37,7 @@ const TableContainer = styled.div`
     border-top: 2px solid #ccc;
     font-weight: 800;
     text-align: center;
+    
   }
 
   tr > td {
@@ -43,7 +46,8 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    hover:
+    frame: border;
+    border:  2px solid #ccc;
   }
 
   
@@ -106,19 +110,51 @@ const AnnualTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td>{"2021-02-16"}</td>
-        <td>{companydata.company.companyId}</td>
-        <td>{"관리부"}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
-        <td>{"내국인"}</td>
-        <td>{"평일"}</td>
-        <td>{"남자"}</td>
-        <td>{"00:00:00AM"}</td>
-        <td>{"00:00:00PM"}</td>
-        <td>{"출근"}</td>
-        <td>{"퇴근"}</td>
-        <td>{"00분"}</td>
-        <td>{"00분"}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
         <td>{""}</td>
       </tr>
     ));
@@ -159,6 +195,34 @@ const AnnualTable = () => {
   return (
     <TableContainer>
       <table>
+      <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>연초</th>
+            {/* 월별 시작 */}
+            <th colspan="2">1월</th>
+            <th colspan="2">2월</th>
+            <th colspan="2">3월</th>
+            <th colspan="2">4월</th>
+            <th colspan="2">5월</th>
+            <th colspan="2">6월</th>
+            <th colspan="2">7월</th>
+            <th colspan="2">8월</th>
+            <th colspan="2">9월</th>
+            <th colspan="2">10월</th>
+            <th colspan="2">11월</th>
+            <th colspan="2">12월</th>
+            <th colspan="3">합계</th>
+            <th colspan="3">연초</th>
+            <th colspan="2">올해</th>
+            <th colspan="2">사용</th>
+            <th colspan="3">미사용만료</th>
+          </tr>
+        </thead>
         <thead>
           <tr>
             <th>사원번호</th>
@@ -198,6 +262,17 @@ const AnnualTable = () => {
             <th>적치</th>
             {/* 연초 */}
             <th>이월연차</th>
+            <th>이월월차</th>
+            {/* 올해 */}
+            <th>발생연차</th>
+            <th>발생월차</th>
+            {/* 사용 */}
+            <th>전년분</th>
+            <th>올해분</th>
+            {/* 미사용만료 */}
+            <th>연차</th>
+            <th>월차</th>
+            <th>총만료</th>
           </tr>
         </thead>
         <tbody>

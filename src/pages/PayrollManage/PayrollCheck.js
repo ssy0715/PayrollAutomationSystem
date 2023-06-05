@@ -25,7 +25,7 @@ const SContentContainer = styled.div`
 
   padding: 30px;
   width: 100%;
-
+  height: calc(100% - 60px);
 `
 
 const SContentHeader = styled.div`
@@ -35,7 +35,7 @@ const SContentHeader = styled.div`
   width: 90%;
   height: 6%;
   margin: 10px;
-  padding: 0px 20px;
+  padding: 10px 20px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);

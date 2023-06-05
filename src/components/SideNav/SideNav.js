@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaClock } from "react-icons/fa";
 import { HiDocumentText, HiDocumentDuplicate } from "react-icons/hi";
 import { TbReportMoney, TbPigMoney, TbDeviceMobileVibration } from "react-icons/tb";
@@ -13,10 +14,11 @@ const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 20%;
   min-width: 200px;
 
+  max-height: 100%;
   min-height: calc(100vh-200px);
   background-color: #548AFF;
   box-shadow: 2px 0 2.94px 0.06px rgba(4, 26, 55, 0.16);
@@ -28,6 +30,9 @@ const SMenuContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
+  width: 100%;
+  padding: 15% 15%;
+
   
   div {
     font-size: 1.1em;
@@ -36,10 +41,7 @@ const SMenuContainer = styled.div`
     letter-spacing : 1px;
 }
 
-  width: 100%;
-
-  padding: 15% 15%;
-  // padding-left: 15%;
+  
 
   a {
     display: flex;
@@ -48,7 +50,7 @@ const SMenuContainer = styled.div`
     text-align: right;
     padding-top: 15px;
     color: white;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     &:hover, &:active {
       color: ${({theme}) => theme.colors.blue010};
@@ -67,6 +69,7 @@ const SAccordion = styled.div`
   &:hover, &:active {
     color: ${({theme}) => theme.colors.blue010};
     text-decoration: none;
+    cursor: pointer;
   }
 
 `
@@ -75,134 +78,195 @@ const SAccordionHeader = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 0.5em;
+
+  // position: absolute;
 `
 
-const SAccodionContent = styled.div`
+const SAccordionContent = styled.div`
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.35s ease;
+  
+  `
+  
+  const IconWrapper = styled.span`
+  font-size: 1.5em; /* Adjust the icon size as needed */
+  `;
+  
+  const Title = styled.span`
+  font-size: 0.9em; 
+`;
 
-`
+const menuItems = [
+  {
+    title: "부서관리",
+    content: ["부서정보"],
+    innerLink: ["/home/depart"],
+  },
+  {
+    title: "사원정보관리",
+    content: ["사원정보"],
+    innerLink: ["/home/employee"],
+  },
+  {
+    title: "직원명부",
+    content: ["직원명부조회"],
+    innerLink: ["/home/employeelist"],
+  },
+  {
+    title: "근태관리",
+    content: ["출퇴근 확인 및 조회","근태조회","출퇴근관리"],
+    innerLink: ["/home/attendance"],
+  },
+  {
+    title: "연차사용내역",
+    content: ["연차사용내역조회"],
+    innerLink: ["/home/annual"],
+  },
+  {
+    title: "근로시간관리",
+    content: ["기본근로시간관리","소정근로시간관리","휴일관리"],
+    innerLink: ["","/home/defaultworktime",""],
+  },
+  {
+    title: "급여관리",
+    content: ["급여관리"],
+    innerLink: ["/home/payrollmanage"],
+  },
+  {
+    title: "급여항목 및 요율관리",
+    content: ["보험료관리", "급여항목관리"],
+    innerLink: ["","/home/ratemanage"],
+  },
+  {
+    title: "급여대장",
+    content: ["급여대장조회"],
+    innerLink: ["/home/payrollcheck"],
+  },
+  {
+    title: "이체내역서",
+    content: ["급여이체내역서"],
+    innerLink: ["/home/transferhistory"],
+  },
+  {
+    title: "출국만기보험내역",
+    content: ["출국만기보험내역 조회"],
+    innerLink: ["/home/departins"],
+  },
+  {
+    title: "퇴직연금내역",
+    content: ["퇴직연금조회"],
+    innerLink: ["/home/retire"],
+  },
+  {
+    title: "보험적취내역",
+    content: ["보험적취내역"],
+    innerLink: ["/home/insurunce"],
+  },
 
+  {
+    title: "기기관리",
+    content: ["비콘단말기관리"],
+    innerLink: ["/home/device"],
+  },
+
+];
+
+
+const IconMapping = {
+  0: RiGroup2Fill,
+  1: RiUserSettingsLine,
+  2: ImProfile,
+  3: ImCalendar,
+  4: MdOutlineFreeCancellation,
+  5: FaClock,
+  6: MdTableView,
+  7: MdLibraryBooks,
+  8: HiDocumentDuplicate,
+  9: HiDocumentText,
+  10: MdLocalAirport,
+  11: TbPigMoney,
+  12: TbReportMoney,
+  13: TbDeviceMobileVibration,
+};
 
 
 const SideNav = () => {
+  const parentRefs = useRef([]);
+  const childRefs = useRef([]);
+  const [isCollapse, setIsCollapse] = useState([]);
+  const location = useLocation();
 
-    const parentRef = useRef(null);
-    const childRef = useRef(null);
+  useEffect(() => {
+    parentRefs.current = parentRefs.current.slice(0, menuItems.length);
+    childRefs.current = childRefs.current.slice(0, menuItems.length);
+    setIsCollapse((prev) => prev.slice(0, menuItems.length));
+  }, []);
+
+  useEffect(() => {
+    const path = location.pathname;
+    const itemIndex = menuItems.findIndex((menuItem) =>
+      menuItem.innerLink.includes(path)
+    );
+    if (itemIndex !== -1) {
+      const parentRef = parentRefs.current[itemIndex];
+      const childRef = childRefs.current[itemIndex];
+      const newIsCollapse = [...isCollapse];
+      const isCollapsed = newIsCollapse[itemIndex];
+      if (parentRef && childRef) {
+        parentRef.style.height = `${childRef.scrollHeight}px`;
+        newIsCollapse[itemIndex] = true;
+        setIsCollapse(newIsCollapse);
+      }
+    }
+  }, [location]);
+
+  const handleOnClick = (index) => {
+    const parentRef = parentRefs.current[index];
+    const childRef = childRefs.current[index];
+    const newIsCollapse = [...isCollapse];
+    const isCollapsed = newIsCollapse[index];
+    if (parentRef && childRef) {
+      if (isCollapsed) {
+        parentRef.style.height = "0";
+      } else {
+        parentRef.style.height = `${childRef.scrollHeight}px`;
+      }
+      newIsCollapse[index] = !isCollapsed;
+      setIsCollapse(newIsCollapse);
+    }
+  };
 
   return (
-
     <SWrapper>
       <SMenuContainer>
-        <SAccordion>
-          <SAccordionHeader>
-            <RiGroup2Fill size={35}/>
-            <div>부서관리</div>
-          </SAccordionHeader>
-          <SAccodionContent ref={parentRef}>
-            <Link ref={childRef} to="/home/depart">부서정보</Link>
-          </SAccodionContent>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <RiUserSettingsLine size={29}/>
-            <div>사원정보관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/employee">사원정보</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <ImProfile size={27}/>
-            <div>직원명부</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/employeelist">직원명부조회</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <ImCalendar size={27}/>
-            <div>근태관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="">출퇴근 확인 및 조회</Link>
-          <Link ref={childRef} to="/home/attendance">근태조회</Link>
-          <Link ref={childRef} to="">출퇴근관리</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <MdOutlineFreeCancellation size={30}/>
-            <div>연차사용내역</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/annual">연차사용내역조회</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <FaClock size={25}/>
-            <div>근로시간관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/defaultworktime">기본근로시간관리</Link>
-          <Link ref={childRef} to="">소정근로시간관리</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <TbPigMoney size={30}/>
-            <div>급여관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/payrollmanage">급여관리</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <MdTableView size={32}/>
-            <div>급여항목 및 요율관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="">보험료관리</Link>
-          <Link ref={childRef} to="/home/ratemanage">급여항목관리</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <MdLibraryBooks size={30}/>
-            <div>급여대장</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/payrollcheck">급여대장조회</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <TbReportMoney size={30}/>
-            <div>이체내역서</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/transferhistory">급여이체내역서</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <MdLocalAirport size={30}/>
-            <div>출국만기보험내역</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/departins">출국만기보험내역 조회</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <HiDocumentText size={30}/>
-            <div>퇴직연금내역</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/retire">퇴직연금조회</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <HiDocumentDuplicate size={30} color="white"/>
-            <div>보험적취내역</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/insurunce">보험적취내역</Link>
-        </SAccordion>
-        <SAccordion>
-          <SAccordionHeader>
-            <TbDeviceMobileVibration size={30}/>
-            <div>기기관리</div>
-          </SAccordionHeader>
-          <Link ref={childRef} to="/home/device">비콘단말기관리</Link>
-        </SAccordion>
+        {menuItems.map((menuItem, index) => (
+          <SAccordion key={index}>
+            <SAccordionHeader onClick={() => handleOnClick(index)}>
+              <IconWrapper>
+                {React.createElement(IconMapping[index], {
+                  style: { verticalAlign: "middle" },
+                })}
+              </IconWrapper>
+              <Title>{menuItem.title}</Title>
+            </SAccordionHeader>
+            <SAccordionContent
+              ref={(ref) => (parentRefs.current[index] = ref)}
+            >
+              <div ref={(ref) => (childRefs.current[index] = ref)}>
+                {menuItem.content.map((item, itemIndex) => (
+                  <Link key={itemIndex} to={menuItem.innerLink[itemIndex] || "/home/com"}>
+                    {item}
+                  </Link>
+                ))}
+              </div>
+            </SAccordionContent>
+          </SAccordion>
+        ))}
       </SMenuContainer>
     </SWrapper>
-
-  )
-
-
-
-}
+  );
+};
 
 export default SideNav;
