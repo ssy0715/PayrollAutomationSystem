@@ -16,6 +16,11 @@ import { Home,
   RetirePension,
   InsuranceClaim,
   DeviceManage,
+  EmployeeCommuteManage,
+  CommuteManage,
+  FixedWorkTimeManage,
+  DayOffManage,
+  PremiumManage,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -43,6 +48,11 @@ function App() {
             <Route path="/home/retire" element={<RetirePension />} />
             <Route path="/home/insurunce" element={<InsuranceClaim />} />
             <Route path="/home/device" element={<DeviceManage />} />
+            <Route path="/home/emplcommute" element={<EmployeeCommuteManage />} />
+            <Route path="/home/commute" element={<CommuteManage />} />
+            <Route path="/home/fixworktime" element={<FixedWorkTimeManage />} />
+            <Route path="/home/dayoff" element={<DayOffManage />} />
+            <Route path="/home/premium" element={<PremiumManage />} />
 
             <Route path="/home/com/:companyId" element={<CompanyDetail />} />
           {/* </Route> */}

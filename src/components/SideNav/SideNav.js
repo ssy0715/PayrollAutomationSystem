@@ -117,7 +117,7 @@ const menuItems = [
   {
     title: "근태관리",
     content: ["출퇴근 확인 및 조회","근태조회","출퇴근관리"],
-    innerLink: ["/home/attendance"],
+    innerLink: ["/home/emplcommute","/home/attendance","/home/commute"],
   },
   {
     title: "연차사용내역",
@@ -127,7 +127,7 @@ const menuItems = [
   {
     title: "근로시간관리",
     content: ["기본근로시간관리","소정근로시간관리","휴일관리"],
-    innerLink: ["","/home/defaultworktime",""],
+    innerLink: ["/home/defaultworktime","/home/fixworktime","/home/dayoff"],
   },
   {
     title: "급여관리",
@@ -137,7 +137,7 @@ const menuItems = [
   {
     title: "급여항목 및 요율관리",
     content: ["보험료관리", "급여항목관리"],
-    innerLink: ["","/home/ratemanage"],
+    innerLink: ["/home/premium","/home/ratemanage"],
   },
   {
     title: "급여대장",

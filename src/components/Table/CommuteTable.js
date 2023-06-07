@@ -8,17 +8,15 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 
   width: 90%;
   height: 90%;
 
-  font-size: 0.7em;
+  font-size: 1.1em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
-  overflow-x: scroll;
-  overflow-y: hidden;
 
   margin: 20px 10px;
 
@@ -37,7 +35,6 @@ const TableContainer = styled.div`
     border-top: 2px solid #ccc;
     font-weight: 800;
     text-align: center;
-    border:  2px solid #ccc;
   }
 
   tr > td {
@@ -46,8 +43,9 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    frame: border;
-    border:  2px solid #ccc;
+    text-align: center;
+    overflow-x: auto;
+    
   }
 
   
@@ -86,7 +84,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const AnnualTable = () => {
+const CommuteTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -110,52 +108,21 @@ const AnnualTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td>{"남자"}</td>
+        <td>{"관리부"}</td>
+        <td>{""}</td>
+        <td>{"010-1234-1234"}</td>
+        <td>{"내국인"}</td>
+        <td>{"871234-2345678"}</td>
         <td>{""}</td>
         <td>{""}</td>
+        <td>{"계약직"}</td>
+        <td>{""}</td>
+        <td>{"00:00:00AM"}</td>
+        <td>{"00:00:00PM"}</td>
         <td>{""}</td>
         <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        {/* <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td> */}
       </tr>
     ));
   };
@@ -195,84 +162,24 @@ const AnnualTable = () => {
   return (
     <TableContainer>
       <table>
-      <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>연초</th>
-            {/* 월별 시작 */}
-            <th colspan="2">1월</th>
-            <th colspan="2">2월</th>
-            <th colspan="2">3월</th>
-            <th colspan="2">4월</th>
-            <th colspan="2">5월</th>
-            <th colspan="2">6월</th>
-            <th colspan="2">7월</th>
-            <th colspan="2">8월</th>
-            <th colspan="2">9월</th>
-            <th colspan="2">10월</th>
-            <th colspan="2">11월</th>
-            <th colspan="2">12월</th>
-            <th colspan="3">합계</th>
-            <th colspan="3">연초</th>
-            <th colspan="2">올해</th>
-            <th colspan="2">사용</th>
-            <th colspan="3">미사용만료</th>
-          </tr>
-        </thead>
         <thead>
           <tr>
             <th>사원번호</th>
+            <th>사원명</th>
+            <th>성별</th>
+            <th>부서명</th>
             <th>직책</th>
-            <th>성명</th>
+            <th>휴대폰번호</th>
+            <th>외국인여부</th>
+            <th>주민등록번호</th>
+            <th>주민등록주소</th>
+            <th>실거주지주소</th>
+            <th>고용형태</th>
+            <th>급여형태</th>
+            <th>기본출근시간</th>
+            <th>기본퇴근시간</th>
             <th>입사일</th>
             <th>퇴사일</th>
-            <th>발생</th>
-            {/* 월별 시작 */}
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            {/* 합계 */}
-            <th>총발생</th>
-            <th>총사용</th>
-            <th>적치</th>
-            {/* 연초 */}
-            <th>이월연차</th>
-            <th>이월월차</th>
-            {/* 올해 */}
-            <th>발생연차</th>
-            <th>발생월차</th>
-            {/* 사용 */}
-            <th>전년분</th>
-            <th>올해분</th>
-            {/* 미사용만료 */}
-            <th>연차</th>
-            <th>월차</th>
-            <th>총만료</th>
           </tr>
         </thead>
         <tbody>
@@ -293,5 +200,5 @@ const AnnualTable = () => {
               };
 
 
-export default AnnualTable;
-              
+export default CommuteTable;
+
