@@ -13,7 +13,7 @@ const TableContainer = styled.div`
   width: 90%;
   height: 90%;
 
-  font-size: 0.6em;
+  font-size: 0.7em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
@@ -36,6 +36,7 @@ const TableContainer = styled.div`
     border-bottom: 2px solid #ccc;
     border-top: 2px solid #ccc;
     font-weight: 800;
+    font-size: 0.8em;
     text-align: center;
     border:  2px solid #ccc;
   }
@@ -86,7 +87,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const AnnualTable = () => {
+const PayrollCheckTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -131,31 +132,6 @@ const AnnualTable = () => {
         <td>{""}</td>
         <td>{""}</td>
         <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        {/* <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td> */}
       </tr>
     ));
   };
@@ -195,84 +171,56 @@ const AnnualTable = () => {
   return (
     <TableContainer>
       <table>
-      <thead>
+        <thead>
           <tr>
+          <th>{""}</th>
+            <th>{""}</th>
+            <th>직급</th>
+            <th>평일근로</th>
+            <th>휴일근로</th>
+            <th>야간근로</th>
+            <th>기본급</th>
+            <th>야간근로수당</th>
+            <th>연장근로수당</th>
+            <th>연차수당</th>
+            <th>인센티브(성과금)</th>
+            <th>휴일근로수당</th>
+            <th>휴일연장수당</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>고용보험</th>
+            <th>국민연금</th>
+            <th>근로소득세(소득세)</th>
+            <th>장기요양보험</th>
             <th></th>
             <th></th>
             <th></th>
-            <th></th>
-            <th></th>
-            <th>연초</th>
-            {/* 월별 시작 */}
-            <th colspan="2">1월</th>
-            <th colspan="2">2월</th>
-            <th colspan="2">3월</th>
-            <th colspan="2">4월</th>
-            <th colspan="2">5월</th>
-            <th colspan="2">6월</th>
-            <th colspan="2">7월</th>
-            <th colspan="2">8월</th>
-            <th colspan="2">9월</th>
-            <th colspan="2">10월</th>
-            <th colspan="2">11월</th>
-            <th colspan="2">12월</th>
-            <th colspan="3">합계</th>
-            <th colspan="3">연초</th>
-            <th colspan="2">올해</th>
-            <th colspan="2">사용</th>
-            <th colspan="3">미사용만료</th>
           </tr>
         </thead>
         <thead>
-          <tr>
+        <tr>
+          <th rowSpan="2">순번</th>
             <th>사원번호</th>
-            <th>직책</th>
             <th>성명</th>
-            <th>입사일</th>
-            <th>퇴사일</th>
-            <th>발생</th>
-            {/* 월별 시작 */}
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            {/* 합계 */}
-            <th>총발생</th>
-            <th>총사용</th>
-            <th>적치</th>
-            {/* 연초 */}
-            <th>이월연차</th>
-            <th>이월월차</th>
-            {/* 올해 */}
-            <th>발생연차</th>
-            <th>발생월차</th>
-            {/* 사용 */}
-            <th>전년분</th>
-            <th>올해분</th>
-            {/* 미사용만료 */}
-            <th>연차</th>
-            <th>월차</th>
-            <th>총만료</th>
+            <th>휴일연장</th>
+            <th>연장근로</th>
+            <th>주휴시간</th>
+            <th>{""}</th>
+            <th>{""}</th>
+            <th>{""}</th>
+            <th>{""}</th>
+            <th>{""}</th>
+            <th>{""}</th>
+            <th>{"기타수당"}</th>
+            <th>{"장기요양보험"}</th>
+            <th>{"지방소득세"}</th>
+            <th>{"가불금"}</th>
+            <th>{"기숙사"}</th>
+            <th>{"기타"}</th>
+            <th>{"기타공제"}</th>
+            <th>{"지급합계"}</th>
+            <th>{"공제합계"}</th>
+            <th>{"차인지급액"}</th>
           </tr>
         </thead>
         <tbody>
@@ -293,5 +241,5 @@ const AnnualTable = () => {
               };
 
 
-export default AnnualTable;
+export default PayrollCheckTable;
               

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import TransferHistoryTable from "../../components/Table/TransferHistoryTable";
 import { Header } from "../../components";
 
 
@@ -167,7 +167,7 @@ const TransferHistory = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <TransferHistoryTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

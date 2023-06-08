@@ -160,10 +160,6 @@ const PremiumManage = () => {
 
   const [defaultpage, setDefaultpage] = useState(<NatPension />);
 
-  const handleOnChange = (e) => {
-    setDefaultpage(e.target.value);
-  };
-
   return (
   <SWrapper>
     <Header />

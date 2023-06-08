@@ -8,17 +8,15 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 
   width: 90%;
   height: 90%;
 
-  font-size: 0.6em;
+  font-size: 1.1em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
-  overflow-x: scroll;
-  overflow-y: hidden;
 
   margin: 20px 10px;
 
@@ -37,7 +35,6 @@ const TableContainer = styled.div`
     border-top: 2px solid #ccc;
     font-weight: 800;
     text-align: center;
-    border:  2px solid #ccc;
   }
 
   tr > td {
@@ -46,8 +43,9 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    frame: border;
-    border:  2px solid #ccc;
+    :hover {
+      color: ${({theme}) => (theme.colors.blue090)}
+    }
   }
 
   
@@ -86,7 +84,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const AnnualTable = () => {
+const TransferHistoryTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,83 +104,50 @@ const AnnualTable = () => {
     setCurrentPage(pageNumber);
   };
 
+  const showThisTable = () => {
+    console.log('테이블 출력되는중');
+  }
+
+  
   const renderTableRows = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
+        <td>{"2013-01-01"}</td>
+        <td>{"83"}</td>
+        <td>{"사원"}</td>
+        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td>{"기업은행"}</td>
+        <td>{"123456-01-123456"}</td>
         <td>{""}</td>
         <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        {/* <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{""}</td> */}
       </tr>
     ));
   };
-
+  
   const renderPaginationButtons = () => {
     const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
-
+    
     const handlePrevPage = () => {
       if (currentPage > 1) {
         setCurrentPage(currentPage - 1);
       }
     };
-
+    
     const handleNextPage = () => {
       if (currentPage < pageNumbers) {
         setCurrentPage(currentPage + 1);
       }
     };
-
+    
     return (
       <>
         <PaginationButton onClick={handlePrevPage}><IoIosArrowDropleftCircle size={45}/></PaginationButton>
         {Array.from({ length: pageNumbers }, (_, index) => (
           <PaginationButton
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            active={index + 1 === currentPage}
+          key={index + 1}
+          onClick={() => handlePageChange(index + 1)}
+          active={index + 1 === currentPage}
           >
             {index + 1}
           </PaginationButton>
@@ -191,95 +156,28 @@ const AnnualTable = () => {
       </>
     );
   };
-
+  
   return (
     <TableContainer>
       <table>
-      <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>연초</th>
-            {/* 월별 시작 */}
-            <th colspan="2">1월</th>
-            <th colspan="2">2월</th>
-            <th colspan="2">3월</th>
-            <th colspan="2">4월</th>
-            <th colspan="2">5월</th>
-            <th colspan="2">6월</th>
-            <th colspan="2">7월</th>
-            <th colspan="2">8월</th>
-            <th colspan="2">9월</th>
-            <th colspan="2">10월</th>
-            <th colspan="2">11월</th>
-            <th colspan="2">12월</th>
-            <th colspan="3">합계</th>
-            <th colspan="3">연초</th>
-            <th colspan="2">올해</th>
-            <th colspan="2">사용</th>
-            <th colspan="3">미사용만료</th>
-          </tr>
-        </thead>
         <thead>
           <tr>
+            <th>번호</th>
+            <th>지급일자</th>
             <th>사원번호</th>
-            <th>직책</th>
+            <th>직급</th>
             <th>성명</th>
-            <th>입사일</th>
-            <th>퇴사일</th>
-            <th>발생</th>
-            {/* 월별 시작 */}
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            <th>발생</th>
-            <th>사용</th>
-            {/* 합계 */}
-            <th>총발생</th>
-            <th>총사용</th>
-            <th>적치</th>
-            {/* 연초 */}
-            <th>이월연차</th>
-            <th>이월월차</th>
-            {/* 올해 */}
-            <th>발생연차</th>
-            <th>발생월차</th>
-            {/* 사용 */}
-            <th>전년분</th>
-            <th>올해분</th>
-            {/* 미사용만료 */}
-            <th>연차</th>
-            <th>월차</th>
-            <th>총만료</th>
+            <th>은행명</th>
+            <th>계좌번호</th>
+            <th>실 지급액</th>
+            <th>비고</th>
           </tr>
         </thead>
         <tbody>
           {currentItems.length > 0 ? (
             renderTableRows()
-          ) : (
-            <tr>
+            ) : (
+              <tr>
               <SNoDataMsg colSpan="10">조회할 항목이 없습니다.</SNoDataMsg>
             </tr>
                       )}
@@ -293,5 +191,4 @@ const AnnualTable = () => {
               };
 
 
-export default AnnualTable;
-              
+export default TransferHistoryTable;
