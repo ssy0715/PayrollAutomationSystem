@@ -27,9 +27,8 @@ const SSaveButtonContainer = styled.div`
 
   display: flex;
   justify-content: space-between;
-  padding: 1em;
-  // gap: 15px;
-
+  align-items: center;
+  padding: 1em 0;
   button {
   flex-wrap: wrap;
   width: 80px;

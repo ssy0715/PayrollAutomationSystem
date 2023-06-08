@@ -26,8 +26,9 @@ const SWrapper = styled.div`
 const SSaveButtonContainer = styled.div`
 
   display: flex;
-  justify-content: flex-end;
-  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
 
   button {
   flex-wrap: wrap;
@@ -96,8 +97,10 @@ const HealthInsurance = () => {
           <span>)</span>
         </SInfoSection>
       </SContainer>
-      <Link to={`https://www.nhis.or.kr/nhis/index.do`}>근로복지공단 건강보험 알아보기</Link>
-      <SSaveButtonContainer><button>저장</button></SSaveButtonContainer>
+      <SSaveButtonContainer>
+        <Link to={`https://www.nhis.or.kr/nhis/index.do`}>근로복지공단 건강보험 알아보기</Link>
+        <button>저장</button>
+      </SSaveButtonContainer>
     </SWrapper>
 
   )

@@ -3,6 +3,9 @@ import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
 import { Header } from "../../components";
 import NatPension from "./NatPension";
+import HealthInsurance from "./HealthInsurance";
+import { EmploymentInsurance } from ".";
+import { LongTermCareInsurance } from ".";
 
 
 const SWrapper = styled.div`
@@ -76,7 +79,7 @@ const SButtonContainer = styled.div`
   gap: 20px;
 `
 
-const SSerchButton = styled.button`
+const SNatButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;
@@ -92,7 +95,7 @@ const SSerchButton = styled.button`
   }
 `
 
-const SNewButton = styled.button`
+const SHealthButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;
@@ -108,7 +111,23 @@ const SNewButton = styled.button`
 
 `
 
-const SDeleteButton = styled.button`
+const SLongTermCareButton = styled.button`
+  flex-wrap: wrap;
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-size: 0.8em;
+  background-color: ${({theme}) => theme.colors.black110};
+  border-radius: 3px;
+  border: none;
+
+  &:hover{  
+    background-color : skyblue;
+  }
+
+`
+
+const SEmployButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;
@@ -141,9 +160,9 @@ const PremiumManage = () => {
 
   const [defaultpage, setDefaultpage] = useState(<NatPension />);
 
-  const handleOnClick = () => {
-
-  }
+  const handleOnChange = (e) => {
+    setDefaultpage(e.target.value);
+  };
 
   return (
   <SWrapper>
@@ -156,15 +175,21 @@ const PremiumManage = () => {
         </SCategory>
         <SContentHeader>
           <SButtonContainer>
-            <SSerchButton>국민연금</SSerchButton>
-            <SNewButton onClick={() => {
-              handleOnClick();
-            }}>건강보험</SNewButton>
-            <SDeleteButton>고용보험</SDeleteButton>
-            <SDeleteButton>장기요양보험</SDeleteButton>
+            <SNatButton onClick={() => {
+              setDefaultpage(<NatPension/>);
+            }}>국민연금</SNatButton>
+            <SHealthButton onClick={() => {
+              setDefaultpage(<HealthInsurance/>);
+            }}>건강보험</SHealthButton>
+            <SEmployButton onClick={() => {
+              setDefaultpage(<EmploymentInsurance/>);
+            }}>고용보험</SEmployButton>
+            <SLongTermCareButton onClick={() => {
+              setDefaultpage(<LongTermCareInsurance/>);
+            }}>장기요양보험</SLongTermCareButton>
           </SButtonContainer>
         </SContentHeader>
-        <SCompanyTable>
+        <SCompanyTable >
           {defaultpage}
         </SCompanyTable>
       </SContentContainer>
