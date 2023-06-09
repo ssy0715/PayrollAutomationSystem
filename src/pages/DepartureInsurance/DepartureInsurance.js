@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
-import { Header } from "../../components";
+import DepartureInsuranceTable from "../../components/Table/DepartureInsuranceTable";
+import { DepartureSumTable, Header } from "../../components";
 
 
 const SWrapper = styled.div`
@@ -125,6 +125,7 @@ const SPrintButton = styled.button`
 
 const SCompanyTable = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -159,7 +160,7 @@ const DepartureInsurance = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <DepartureInsuranceTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import InsuranceClaimTable from "../../components/Table/InsuranceClaimTable";
 import { Header } from "../../components";
 
 
@@ -191,7 +191,7 @@ const InsuranceClaim = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <InsuranceClaimTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

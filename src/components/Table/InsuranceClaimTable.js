@@ -3,36 +3,38 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import { DepartureSumTable } from "..";
 
 
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: space-between;
   width: 90%;
   height: 90%;
 
-  font-size: 1.1em;
+  font-size: 0.6em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
-
+  
   margin: 20px 10px;
-
-
+  
+  
   table {
-
+    
   }
-
+  
   table tr:nth-child(even) {
     background-color: ${({ theme }) => theme.colors.blue010};
-
+    
   }
-
+  
   th {
+    vertical-align: middle;
     border-bottom: 2px solid #ccc;
-    border-top: 2px solid #ccc;
+    border: 2px solid #ccc;
     font-weight: 800;
     text-align: center;
   }
@@ -43,9 +45,7 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    :hover {
-      color: ${({theme}) => (theme.colors.blue090)}
-    }
+    border: 2px solid #ccc;
   }
 
   
@@ -79,53 +79,13 @@ const PaginationButton = styled.button`
   border: 0;
   border-radius: 5px;
   background-color: transparent;
-  font-size: 1.1em;
+  font-size: 1.7em;
   font-weight: 550;
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const DayOffTable = () => {
-  const navigate = useNavigate();
+const InsuranceClaimTable = () => {
 
-// 체크박스 로직
-// function Sample() {
-//   const data = [
-//     {id: 0, title: '선택 1'},
-//     {id: 1, title: '선택 2'},
-//     {id: 2, title: '선택 3'},
-//     {id: 3, title: '선택 4'}
-//   ];
-
-  // 체크된 아이템을 담을 배열
-//   const [checkItems, setCheckItems] = useState([]);
-
-// 체크박스 단일 선택
-//   const handleSingleCheck = (checked, id) => {
-//     if (checked) {
-       // 단일 선택 시 체크된 아이템을 배열에 추가
-//       setCheckItems(prev => [...prev, id]);
-//     } else {
-       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-//       setCheckItems(checkItems.filter((el) => el !== id));
-//     }
-//   };
-
-   // 체크박스 전체 선택
-//   const handleAllCheck = (checked) => {
-//     if(checked) {
-       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
-//       const idArray = [];
-//       data.forEach((el) => idArray.push(el.id));
-//       setCheckItems(idArray);
-//     }
-//     else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
-//       setCheckItems([]);
-//     }
-//   }
-//   };
-
-// 체크박스 로직 끝
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -143,41 +103,44 @@ const DayOffTable = () => {
     setCurrentPage(pageNumber);
   };
 
-const renderTableRows = () => {
+  const renderTableRows = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
-        <td>{<input type="checkbox"/>}</td>
-        <td>{"2020-01-24"}</td>
-        <td>{"설날"}</td>
-        <td>{"유급"}</td>
+        <td>{companydata.company.companyId}</td>
+        <td>홍길동</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
         <td>{""}</td>
       </tr>
     ));
   };
-  
+
   const renderPaginationButtons = () => {
     const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
-    
+
     const handlePrevPage = () => {
       if (currentPage > 1) {
         setCurrentPage(currentPage - 1);
       }
     };
-    
+
     const handleNextPage = () => {
       if (currentPage < pageNumbers) {
         setCurrentPage(currentPage + 1);
       }
     };
-    
+
     return (
       <>
         <PaginationButton onClick={handlePrevPage}><IoIosArrowDropleftCircle size={45}/></PaginationButton>
         {Array.from({ length: pageNumbers }, (_, index) => (
           <PaginationButton
-          key={index + 1}
-          onClick={() => handlePageChange(index + 1)}
-          active={index + 1 === currentPage}
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            active={index + 1 === currentPage}
           >
             {index + 1}
           </PaginationButton>
@@ -186,24 +149,97 @@ const renderTableRows = () => {
       </>
     );
   };
-  
+
   return (
     <TableContainer>
       <table>
         <thead>
           <tr>
-            <th><input type="checkbox"/></th>
-            <th>날짜</th>
-            <th>휴일명</th>
-            <th>구분</th>
+            <th rowSpan={3}>사원번호</th>
+            <th rowSpan={3}>직책</th>
+            <th rowSpan={3}>성명</th>
+            <th rowSpan={3}>입사일</th>
+
+            <th colSpan={4}>1월</th>
+            <th colSpan={4}>2월</th>
+            <th colSpan={4}>3월</th>
+            <th colSpan={4}>4월</th>
+            <th colSpan={4}>5월</th>
+            <th colSpan={4}>6월</th>
+            <th colSpan={4}>7월</th>
+            <th colSpan={4}>8월</th>
+            <th colSpan={4}>9월</th>
+            <th colSpan={4}>10월</th>
+            <th colSpan={4}>11월</th>
+            <th colSpan={4}>12월</th>
+
+            <th colSpan={6}>합계</th>
+          </tr>
+          <tr>
+            {/* 월별 헤더 시작 */}
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            {/* 1월끝 */}
+            {}
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+
+            {/* 월별 헤더 끝 */}
+            <th></th>
+            <th>납입금액</th>
             <th>비고</th>
+          </tr>
+          <tr>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
+            
           </tr>
         </thead>
         <tbody>
           {currentItems.length > 0 ? (
             renderTableRows()
-            ) : (
-              <tr>
+          ) : (
+            <tr>
               <SNoDataMsg colSpan="10">조회할 항목이 없습니다.</SNoDataMsg>
             </tr>
                       )}
@@ -217,4 +253,5 @@ const renderTableRows = () => {
               };
 
 
-export default DayOffTable;
+export default InsuranceClaimTable;
+              

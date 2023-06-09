@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
-import { Header } from "../../components";
+import { Header, RetirePensionTable } from "../../components";
 
 
 const SWrapper = styled.div`
@@ -167,7 +166,7 @@ const RetirePension = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <RetirePensionTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
