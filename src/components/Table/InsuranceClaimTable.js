@@ -5,14 +5,23 @@ import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 import { DepartureSumTable } from "..";
 
+const STableWrapper = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: space-between;
+width: 90%;
+height: 90%;
+`
 
 const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
 
   font-size: 0.6em;
   text-align: left;
@@ -23,7 +32,11 @@ const TableContainer = styled.div`
   
   
   table {
-    
+    // white-space: nowrap; 
+    // table-layout: fixed;
+    word-break: keep-all;
+    width: 100%;
+    height: 100%;
   }
   
   table tr:nth-child(even) {
@@ -46,6 +59,7 @@ const TableContainer = styled.div`
     color: rgb(40, 40, 40);
     cursor: pointer;
     border: 2px solid #ccc;
+    vertical-align: middle;
   }
 
   
@@ -114,6 +128,79 @@ const InsuranceClaimTable = () => {
         <td>{""}</td>
         <td>{""}</td>
         <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td>{""}</td>
+        <td></td>
       </tr>
     ));
   };
@@ -151,6 +238,7 @@ const InsuranceClaimTable = () => {
   };
 
   return (
+    <STableWrapper>
     <TableContainer>
       <table>
         <thead>
@@ -160,18 +248,18 @@ const InsuranceClaimTable = () => {
             <th rowSpan={3}>성명</th>
             <th rowSpan={3}>입사일</th>
 
-            <th colSpan={4}>1월</th>
-            <th colSpan={4}>2월</th>
-            <th colSpan={4}>3월</th>
-            <th colSpan={4}>4월</th>
-            <th colSpan={4}>5월</th>
-            <th colSpan={4}>6월</th>
-            <th colSpan={4}>7월</th>
-            <th colSpan={4}>8월</th>
-            <th colSpan={4}>9월</th>
-            <th colSpan={4}>10월</th>
-            <th colSpan={4}>11월</th>
-            <th colSpan={4}>12월</th>
+            <th colSpan={5}>1월</th>
+            <th colSpan={6}>2월</th>
+            <th colSpan={6}>3월</th>
+            <th colSpan={6}>4월</th>
+            <th colSpan={6}>5월</th>
+            <th colSpan={6}>6월</th>
+            <th colSpan={6}>7월</th>
+            <th colSpan={6}>8월</th>
+            <th colSpan={6}>9월</th>
+            <th colSpan={6}>10월</th>
+            <th colSpan={6}>11월</th>
+            <th colSpan={6}>12월</th>
 
             <th colSpan={6}>합계</th>
           </tr>
@@ -190,16 +278,83 @@ const InsuranceClaimTable = () => {
             <th>건강보험</th>
             <th>건강보험정산</th>
             <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
+
+            <th rowSpan={2}>과세기준</th>
+            <th rowSpan={2}>국민연금</th>
+            <th rowSpan={2}>고용보험</th>
+            <th>건강보험</th>
+            <th>건강보험정산</th>
+            <th>소득세</th>
 
             {/* 월별 헤더 끝 */}
-            <th></th>
-            <th>납입금액</th>
-            <th>비고</th>
+
           </tr>
           <tr>
             <th>장기요양보험정산</th>
             <th>지방소득세</th>
             <th>장기요양보험</th>
+
             <th>장기요양보험정산</th>
             <th>지방소득세</th>
             <th>장기요양보험</th>
@@ -232,7 +387,9 @@ const InsuranceClaimTable = () => {
             <th>장기요양보험</th>
             <th>장기요양보험정산</th>
             <th>지방소득세</th>
-            
+            <th>장기요양보험</th>
+            <th>장기요양보험정산</th>
+            <th>지방소득세</th>
           </tr>
         </thead>
         <tbody>
@@ -249,6 +406,7 @@ const InsuranceClaimTable = () => {
                       {renderPaginationButtons()}
                     </PaginationContainer>
                   </TableContainer>
+                  </STableWrapper>
                 );
               };
 

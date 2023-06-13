@@ -18,6 +18,8 @@ const SWrapper = styled.div`
   width: 20%;
   min-width: 200px;
 
+  overflow-y: auto;
+
   max-height: 100%;
   min-height: calc(100vh-200px);
   background-color: #548AFF;

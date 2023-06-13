@@ -17,3 +17,4 @@ export {default as DepartureInsuranceTable} from "./Table/DepartureInsuranceTabl
 export {default as DepartureSumTable} from "./Table/DepartureSumTable"
 export {default as RetirePensionTable} from "./Table/RetirePensionTable"
 export {default as InsuranceClaimTable} from "./Table/InsuranceClaimTable"
+export {default as EmployeeDetailTable} from "./Table/EmployeeDetailTable"

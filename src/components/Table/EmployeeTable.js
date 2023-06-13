@@ -91,12 +91,12 @@ const EmployeeTable = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
 
-  const [tests, setTest] = useState( [] );
-  useEffect( () =>{
-    fetch('http://127.0.0.1:8000/test/')
-      .then( res => res.json())
-      .then( data => console.log(data))
-  }, [])
+  // const [tests, setTest] = useState( [] );
+  // useEffect( () =>{
+  //   fetch('http://127.0.0.1:8000/test/')
+  //     .then( res => res.json())
+  //     .then( data => console.log(data))
+  // }, [])
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -107,7 +107,7 @@ const EmployeeTable = () => {
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td onClick={() => navigate(`./employeedetail`)}>{companydata.company.manager}</td>
         <td>{"사원"}</td>
         <td>{"내국인"}</td>
         <td>{"남자"}</td>

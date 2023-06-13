@@ -21,6 +21,7 @@ import { Home,
   FixedWorkTimeManage,
   DayOffManage,
   PremiumManage,
+  EmployeeDetail,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -55,6 +56,8 @@ function App() {
             <Route path="/home/premium" element={<PremiumManage />} />
 
             <Route path="/home/com/:companyId" element={<CompanyDetail />} />
+            <Route path="/home/employee/employeedetail" element={<EmployeeDetail />} />
+          
           {/* </Route> */}
         </Routes>
       </Router>

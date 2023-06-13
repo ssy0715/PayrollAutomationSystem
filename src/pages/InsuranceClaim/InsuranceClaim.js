@@ -146,12 +146,14 @@ const SCompanyTable = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
+  max-width: 90%;
   height: 80%;
   margin: 10px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  overflow-x: auto;
 `
 
 const InsuranceClaim = () => {

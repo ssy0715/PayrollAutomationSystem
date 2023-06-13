@@ -24,4 +24,7 @@ export {default as CommuteManage } from "./CommuteManage/CommuteManage"
 export {default as FixedWorkTimeManage } from "./WorkTimeManage/FixedWorkTimeManage"
 export {default as DayOffManage } from "./WorkTimeManage/DayOffManage"
 export {default as PremiumManage } from "./PremiumManage/PremiumManage"
+export {default as EmployeeDetail } from "./EmployeeManage/EmployeeDetail"
+
+
 // export {default as EmploymentInsurance } from "./PremiumManage/EmploymentInsurance"

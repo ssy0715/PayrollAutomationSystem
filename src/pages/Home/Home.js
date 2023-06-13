@@ -18,7 +18,6 @@ const SContainer = styled.div`
   align-items: center;
   width: 100vw;
   min-height: calc(100% - 120px);
-  // margin: 8% 0%;
 
 `
 
@@ -30,8 +29,7 @@ const SContentWrapper = styled.div`
 
   min-width: 100vw;
   min-height:100%;
-  padding-top: 10%;
-  margin-bottom: 5%;
+  margin: 5% 0;
 
   overflow: hidden;
 
@@ -43,6 +41,7 @@ const SHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  min-height: 30%;
 `
 
 const SSubHeader = styled.div`
