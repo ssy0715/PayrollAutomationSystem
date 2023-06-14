@@ -108,7 +108,7 @@ const CommuteTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
+        <td onClick={() => navigate(`./commutedetail`)}>{companydata.company.manager}</td>
         <td>{"남자"}</td>
         <td>{"관리부"}</td>
         <td>{""}</td>

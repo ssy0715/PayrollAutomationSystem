@@ -22,6 +22,7 @@ import { Home,
   DayOffManage,
   PremiumManage,
   EmployeeDetail,
+  CommuteDetail,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -57,7 +58,7 @@ function App() {
 
             <Route path="/home/com/:companyId" element={<CompanyDetail />} />
             <Route path="/home/employee/employeedetail" element={<EmployeeDetail />} />
-          
+            <Route path="/home/commute/commutedetail" element={<CommuteDetail />} />
           {/* </Route> */}
         </Routes>
       </Router>

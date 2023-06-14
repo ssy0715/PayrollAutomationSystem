@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { GoPrimitiveDot } from "react-icons/go";
+import EmployeeDetailFamilyTable from "./EmployeeDetailFamilyTable";
+
 
 const SWrapper = styled.div`
 
@@ -16,8 +18,13 @@ const SWrapper = styled.div`
   border-collapse: collaps;
 
   margin: 20px 10px;
+  padding-top: 40px;
   
   border-top: 2.5px solid ${({theme}) => theme.colors.black050};
+
+  gap: 2em;
+
+
 
   input {
     border: none;
@@ -44,6 +51,7 @@ const SWrapper = styled.div`
       border: none;
     }
   }
+  
 
 `
 
@@ -52,6 +60,17 @@ const SCategoryContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
+  vertical-align: middle;
+
+
+
+& > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 1em;
+
+  }
 `
 
 const SCompanyInfo = styled.div`
@@ -148,7 +167,7 @@ input {
 
 `
 
-const SCompanyLogo = styled.div`
+const SFamilyInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,7 +175,18 @@ const SCompanyLogo = styled.div`
 
   height: 30%;
 
-  `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  
+  height: 30%;
+  
+  
+}
+
+
+`
 
 const SFileContainer = styled.div`
 display: flex;
@@ -172,29 +202,29 @@ input {
 
 const SFileBtn = styled.button`
 flex-wrap: wrap;
-  width: 80px;
-  height: 40px;
-  color: white;
-  font-size: 0.8em;
-  background-color: ${({theme}) => theme.colors.blue090};
-  border-radius: 3px;
-  border: none;
+width: 80px;
+height: 40px;
+color: white;
+font-size: 0.8em;
+background-color: ${({theme}) => theme.colors.blue090};
+border-radius: 3px;
+border: none;
 
 
-  &:hover{  
-    background-color : skyblue;
-  }
+&:hover{  
+  background-color : skyblue;
+}
 `
 
 const SLogoimgContainer = styled.div`
-  width: 100%;
-  height: 10em;
+width: 100%;
+height: 10em;
 
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-  margin: 2em 0;
-  padding: 20px;
+background-color: white;
+border-radius: 3px;
+box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
+margin: 2em 0;
+padding: 20px;
 `
 
 const SSalaryInfo = styled.div`
@@ -246,61 +276,26 @@ table {
 `
 
 const SAddButton = styled.button`
+flex-wrap: wrap;
+
+width: 80px;
+height: 30px;
+color: white;
+font-size: 0.8em;
+background-color: ${({theme}) => theme.colors.blue090};
+border-radius: 3px;
+border: none;
+
+&:hover{  
+  background-color : skyblue;
+}
+
 
 `
 
 
 
 const EmployeeDetailTable = () => {
-
-  // const navigate = useNavigate();
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const itemsPerPage = 10;
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
-
-  // const [tests, setTest] = useState( [] );
-  // useEffect( () =>{
-  //   fetch('http://127.0.0.1:8000/test/')
-  //     .then( res => res.json())
-  //     .then( data => console.log(data))
-  // }, [])
-
-  // const handlePageChange = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
-  // const renderTableRows = () => {
-  //   return currentItems.map((companydata) => (
-  //     <tr key={companydata.company.companyId}>
-  //       <td>{companydata.company.companyId}</td>
-  //       <td>홍길동</td>
-  //       <td></td>
-  //       <td>{""}</td>
-  //       <td>{""}</td>
-  //       <td>{""}</td>
-  //       <td>{""}</td>
-  //       <td>{""}</td>
-  //     </tr>
-  //   ));
-  // };
-
-  // const renderPaginationButtons = () => {
-  //   const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
-
-  //   const handlePrevPage = () => {
-  //     if (currentPage > 1) {
-  //       setCurrentPage(currentPage - 1);
-  //     }
-  //   };
-
-  //   const handleNextPage = () => {
-  //     if (currentPage < pageNumbers) {
-  //       setCurrentPage(currentPage + 1);
-  //     }
-  //   };
 
   return (
     <SWrapper>
@@ -524,38 +519,17 @@ const EmployeeDetailTable = () => {
           </tr>
         </table>
       </SForeignerInfo>
-      <SCompanyLogo>
+      <SFamilyInfo>
       <SCategoryContainer>
           <GoPrimitiveDot color = "#548AFF" />
           <h3>가족사항</h3>
+          <div>
           <SAddButton>추가</SAddButton>
+          </div>
         </SCategoryContainer>
-        <table>
-        <tr>
-            <th>번호</th>
-            <th>구성원구분</th>
-            <th>관계</th>
-            <th>이름</th>
-            <th>생년월일</th>
-            <th>동거여부</th>
-            <th>공제희망여부</th>
-            <th>장애인여부</th>
-          </tr>
-          <tr>
-            <td>번호</td>
-            <td>구성원구분</td>
-            <td>관계</td>
-            <td>이름</td>
-            <td>생년월일</td>
-            <td>동거여부</td>
-            <td>공제희망여부</td>
-            <td>장애인여부</td>
-          </tr>
-        </table>
-      </SCompanyLogo>
+      </SFamilyInfo>
     </SWrapper>
   )
-  // }
 }
 
 export default EmployeeDetailTable;

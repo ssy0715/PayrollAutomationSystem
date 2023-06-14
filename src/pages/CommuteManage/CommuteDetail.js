@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Header, SideNav, EmployeeDetailTable, EmployeeDetailFamilyTable } from "../../components";
+import { Header, SideNav, CommuteDetailTable, EmployeeDetailFamilyTable } from "../../components";
 
 
 
@@ -81,7 +81,7 @@ const SSaveBtn = styled.button`
 
 
 
-const EmployeeDetail = () => {
+const CommuteDetail = () => {
 
   const navigate = useNavigate();
 
@@ -91,13 +91,12 @@ const EmployeeDetail = () => {
       <SContentWrapper>
         <SideNav />
         <SContentContainer>
-          <SCategory>사원정보 상세</SCategory>
+          <SCategory>출퇴근 상세</SCategory>
           <SButtonContainer>
             <SCancleBtn onClick={()=>navigate(`/home/employee`)}>취소</SCancleBtn>
             <SSaveBtn>저장</SSaveBtn>
           </SButtonContainer>
-          <EmployeeDetailTable />
-          <EmployeeDetailFamilyTable/>
+          <CommuteDetailTable />
         </SContentContainer>
       </SContentWrapper>
     </SWrapper>    
@@ -106,4 +105,4 @@ const EmployeeDetail = () => {
 
 }
 
-export default EmployeeDetail;
+export default CommuteDetail;

@@ -13,12 +13,19 @@ const TableContainer = styled.div`
   width: 90%;
   height: 90%;
 
+  padding:5%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
+
+
+
   font-size: 1.1em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
 
-  margin: 20px 10px;
+  margin: 0 10px;
 
 
   table {
@@ -43,11 +50,10 @@ const TableContainer = styled.div`
     font-weight: 200;u
     color: rgb(40, 40, 40);
     cursor: pointer;
-    text-align: center;
-    overflow-x: auto;
-    
+    hover:
   }
 
+  
   
 
 `;
@@ -84,7 +90,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const EmployeeCommuteTable = () => {
+const EmployeeDetailFamilyTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -108,21 +114,13 @@ const EmployeeCommuteTable = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./${companydata.company.companyId}`)}>{companydata.company.manager}</td>
-        <td>{"남자"}</td>
-        <td>{"관리부"}</td>
-        <td>{""}</td>
-        <td>{"010-1234-1234"}</td>
-        <td>{"내국인"}</td>
-        <td>{"871234-2345678"}</td>
-        <td>{""}</td>
-        <td>{""}</td>
-        <td>{"계약직"}</td>
-        <td>{""}</td>
-        <td>{"00:00:00AM"}</td>
-        <td>{"00:00:00PM"}</td>
-        <td>{""}</td>
-        <td>{""}</td>
+        <td>{companydata.company.companyId}</td>
+        <td>{companydata.company.manager}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     ));
   };
@@ -164,22 +162,14 @@ const EmployeeCommuteTable = () => {
       <table>
         <thead>
           <tr>
-            <th>사원번호</th>
-            <th>사원명</th>
-            <th>성별</th>
-            <th>부서명</th>
-            <th>직책</th>
-            <th>휴대폰번호</th>
-            <th>외국인여부</th>
-            <th>주민등록번호</th>
-            <th>주민등록주소</th>
-            <th>실거주지주소</th>
-            <th>고용형태</th>
-            <th>급여형태</th>
-            <th>기본출근시간</th>
-            <th>기본퇴근시간</th>
-            <th>입사일</th>
-            <th>퇴사일</th>
+            <th>번호</th>
+            <th>구성원구분</th>
+            <th>관계</th>
+            <th>이름</th>
+            <th>생년월일</th>
+            <th>동거여부</th>
+            <th>공제희망여부</th>
+            <th>장애인여부</th>
           </tr>
         </thead>
         <tbody>
@@ -200,5 +190,5 @@ const EmployeeCommuteTable = () => {
               };
 
 
-export default EmployeeCommuteTable;
+export default EmployeeDetailFamilyTable;
               
