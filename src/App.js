@@ -23,6 +23,7 @@ import { Home,
   PremiumManage,
   EmployeeDetail,
   CommuteDetail,
+  DeviceDetail,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/home/com/:companyId" element={<CompanyDetail />} />
             <Route path="/home/employee/employeedetail" element={<EmployeeDetail />} />
             <Route path="/home/commute/commutedetail" element={<CommuteDetail />} />
+            <Route path="/home/device/devicedetail" element={<DeviceDetail />} />
           {/* </Route> */}
         </Routes>
       </Router>

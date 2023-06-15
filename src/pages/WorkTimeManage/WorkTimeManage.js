@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import { WorkTimeTable } from "../../components";
 import { Header } from "../../components";
 
 
@@ -115,6 +115,7 @@ const SCompanyTable = styled.div`
   width: 90%;
   height: 80%;
   margin: 10px;
+  padding:  50px 0px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
@@ -130,7 +131,7 @@ const WorkTimeManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>기본근로시간관리</div>
+          <div>기본근로시간 관리</div>
         </SCategory>
         <SContentHeader>
           <SButtonContainer>
@@ -139,7 +140,7 @@ const WorkTimeManage = () => {
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <WorkTimeTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

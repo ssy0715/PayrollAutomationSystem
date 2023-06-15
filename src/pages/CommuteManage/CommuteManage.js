@@ -45,12 +45,6 @@ const SContentHeader = styled.div`
   font-size: 1.1em;
   // font-weight: 600;
 
-& > input {
-  border: none;
-  font-size: 1em;
-  width: 5%;
-
-}
 
 `
 

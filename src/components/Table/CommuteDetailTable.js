@@ -43,7 +43,7 @@ const SWrapper = styled.div`
     width: 25%;
     padding: 0 15px;
     border-bottom: 1px solid ${({theme}) => theme.colors.black050};
- 
+
     > select {
       width: 100%;
       height: 100%;
@@ -152,83 +152,6 @@ table {
 
 `
 
-const SNote = styled.div`
-display: flex;
-flex-direction: column;
-
-
-height: 30%;
-
-input {
-  height: 100px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-  padding: 15px;
-}
-
-`
-
-const SFamilyInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-
-  height: 30%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-  
-  height: 30%;
-  
-  
-}
-
-
-`
-
-const SFileContainer = styled.div`
-display: flex;
-
-gap: 1.1em;
-
-input {
-  width: 20%;
-  box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-}
-
-`
-
-const SFileBtn = styled.button`
-flex-wrap: wrap;
-width: 80px;
-height: 40px;
-color: white;
-font-size: 0.8em;
-background-color: ${({theme}) => theme.colors.blue090};
-border-radius: 3px;
-border: none;
-
-
-&:hover{  
-  background-color : skyblue;
-}
-`
-
-const SLogoimgContainer = styled.div`
-width: 100%;
-height: 10em;
-
-background-color: white;
-border-radius: 3px;
-box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-margin: 2em 0;
-padding: 20px;
-`
-
 const SWorkTimeSum = styled.div`
 display: flex;
 flex-direction: column;
@@ -254,61 +177,21 @@ table {
   height: 300px;
 
 
-  >tr:first-child {
-    height: 20%;
+    >tr:first-child {
+      height: 20%;
+    }
+  
+    > tr>td:nth-child(odd) {
+      width: 8%;
+
   }
 
-  >td {
+  tr > td {
     vertical-align: middle;
   }
 
-
-  
 }
 `
-
-const SForeignerInfo = styled.div`
-display: flex;
-flex-direction: column;
-
-
-height: 30%;
-
-
-input {
-  height: 100%;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-}
-
-table {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-  
-  
-}
-`
-
-const SAddButton = styled.button`
-flex-wrap: wrap;
-
-width: 80px;
-height: 30px;
-color: white;
-font-size: 0.8em;
-background-color: ${({theme}) => theme.colors.blue090};
-border-radius: 3px;
-border: none;
-
-&:hover{  
-  background-color : skyblue;
-}
-
-
-`
-
 
 
 const CommuteDetailTable = () => {
@@ -418,7 +301,7 @@ const CommuteDetailTable = () => {
           <h3>근무시간 합계</h3>
         </SCategoryContainer>
         <table>
-          <tr>
+          <tr style={{ verticalAlign: 'middle' }}>
             <td>실제근무시간</td>
             <td><input type="text"/></td>
             </tr>

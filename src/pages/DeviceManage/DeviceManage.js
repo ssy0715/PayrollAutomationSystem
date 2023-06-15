@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
 import { Header } from "../../components";
-
+import { DeviceManageTable } from "../../components";
 
 const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  
   width: 100%;
 `
 
@@ -43,13 +43,13 @@ const SContentHeader = styled.div`
 
   font-size: 1.2em;
 
-& > input {
-  border: none;
-  font-size: 1em;
-  width: 5%;
-
-}
-
+  & > input {
+    border: 1px solid ${({theme}) => theme.colors.black050}
+    border-radius: 3px;
+    font-size: 1em;
+    width: 5%;
+  
+  }
 `
 
 const SInputContainer = styled.div`
@@ -57,6 +57,7 @@ const SInputContainer = styled.div`
   width: 100%;
   min-width: 30%;
   gap: 1.1em;
+
 `
 
 const SCategory = styled.div`
@@ -161,12 +162,11 @@ const DeviceManage = () => {
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SOutButton>내보내기</SOutButton>
-            <SPrintButton>인쇄</SPrintButton>
+            <SOutButton>신규</SOutButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <DeviceManageTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
