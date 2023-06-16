@@ -217,6 +217,16 @@ const SBasicInfoTable= styled.div`
 
   table {
     width: 100%;
+    
+  }
+
+  th {
+    text-align: right;
+    padding: 0.2em 0.6em;
+    font-weight: 400;
+    font-size: 1em;
+    height: 90px;
+    background-color: ${({ theme }) => theme.colors.blue010};
   }
   
   td:nth-child(odd) { 
@@ -435,7 +445,15 @@ const PayrollManageTable = () => {
                                 <th>연차수당</th>
                                 <th>인센티브(성과금)</th>
                                 <th>휴일근로수당</th>
-                                <th rowSpan={2}>공통항목 합계액</th>
+                                <th rowSpan={2}></th>
+                              </tr>
+                              <tr>
+                                <td><input type="text"/></td>
+                                <td><input type="text"/></td>
+                                <td><input type="text"/></td>
+                                <td><input type="text"/></td>
+                                <td><input type="text"/></td>
+                                <td><input type="text"/></td>
                               </tr>
                             </table>
                           </SPaymentInfoTable>
