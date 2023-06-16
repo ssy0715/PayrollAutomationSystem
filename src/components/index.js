@@ -22,3 +22,4 @@ export {default as EmployeeDetailFamilyTable} from "./Table/EmployeeDetailFamily
 export {default as CommuteDetailTable} from "./Table/CommuteDetailTable"
 export {default as DeviceManageTable} from "./Table/DeviceManageTable"
 export {default as WorkTimeTable} from "./Table/WorkTimeTable"
+export {default as PayrollManageTable} from "./Table/PayrollManageTable"

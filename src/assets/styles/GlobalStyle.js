@@ -24,9 +24,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  // :root {
-  //   --toastify-toast-width: 450px;
-  // }
+   :root {
+     --toastify-toast-width: 450px;
+   }
 
   html,
   body {
@@ -35,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: "ONE-Mobile-Regular";
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

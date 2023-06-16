@@ -24,7 +24,8 @@ const SContentContainer = styled.div`
   align-items: center;
   height: calc(100% - 60px);
   padding: 30px;
-  width: 100%;
+  width: 90%;
+  max-width: 90%;
 
 `
 
@@ -33,6 +34,7 @@ const SContentHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
+  max-width: 90%;
   height: auto;
   min-height: 6%;
 
@@ -143,12 +145,13 @@ const SPrintButton = styled.button`
 
 const SCompanyTable = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 90%;
   max-width: 90%;
   height: 80%;
   margin: 10px;
+  padding: 30px 30px;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);

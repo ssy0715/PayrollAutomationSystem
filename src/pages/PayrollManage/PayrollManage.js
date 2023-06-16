@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeTable from "../../components/Table/EmployeeTable";
+import PayrollManageTable from "../../components/Table/PayrollManageTable";
 import { Header } from "../../components";
 
 
@@ -103,6 +103,7 @@ const SNewButton = styled.button`
 
 const SCompanyTable = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -145,13 +146,19 @@ const PayrollManage = () => {
             <option value="3">관리부</option>
             <option value="4">경영부</option>
           </select>
+          <div>급여종류 : </div>
+          <select size={1}>
+            <option value="1">월급여</option>
+            <option value="2">시급여</option>
+            <option value="3">일급여</option>
+          </select>
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeTable/>
+          <PayrollManageTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

@@ -10,8 +10,9 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: space-between;
-width: 90%;
+width: 100%;
 height: 90%;
+overflow-x: auto;
 `
 
 const TableContainer = styled.div`
@@ -19,11 +20,11 @@ const TableContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 90%;
   height: 100%;
 
-  font-size: 0.6em;
+  font-size: 0.7em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
@@ -32,16 +33,19 @@ const TableContainer = styled.div`
   
   
   table {
-    // white-space: nowrap; 
-    // table-layout: fixed;
+    white-space: nowrap; 
     word-break: keep-all;
     width: 100%;
     height: 100%;
+    
   }
   
   table tr:nth-child(even) {
     background-color: ${({ theme }) => theme.colors.blue010};
     
+  }
+
+  tr {
   }
   
   th {
@@ -50,6 +54,7 @@ const TableContainer = styled.div`
     border: 2px solid #ccc;
     font-weight: 800;
     text-align: center;
+    padding: 2px 3px;
   }
 
   tr > td {
@@ -60,6 +65,8 @@ const TableContainer = styled.div`
     cursor: pointer;
     border: 2px solid #ccc;
     vertical-align: middle;
+
+    padding: 2px 3px;
   }
 
   

@@ -16,7 +16,7 @@ const SWrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 20%;
-  min-width: 200px;
+  min-width: 300px;
 
   overflow-y: auto;
 
