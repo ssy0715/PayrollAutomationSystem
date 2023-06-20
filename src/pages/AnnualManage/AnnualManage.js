@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import SideNav from "../../components/SideNav/SideNav";
+import { SideNav } from "../../components";
 import { useState } from "react";
 import {AnnualTable} from "../../components"
 import { Header } from "../../components";
-
 
 const SWrapper = styled.div`
   display: flex;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import EmployeeDetailFamilyTable from "./EmployeeDetailFamilyTable";
+import NewFamilyModal from "../Modal/NewFamilyModal";
 
 
 const SWrapper = styled.div`
@@ -297,6 +299,11 @@ border: none;
 
 const EmployeeDetailTable = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <SWrapper>
       <SCompanyInfo>
@@ -524,7 +531,8 @@ const EmployeeDetailTable = () => {
           <GoPrimitiveDot color = "#548AFF" />
           <h3>가족사항</h3>
           <div>
-          <SAddButton>추가</SAddButton>
+          <SAddButton onClick={openModal}>추가</SAddButton>
+          <NewFamilyModal  isOpen={isModalOpen} closeModal={closeModal}/>
           </div>
         </SCategoryContainer>
       </SFamilyInfo>

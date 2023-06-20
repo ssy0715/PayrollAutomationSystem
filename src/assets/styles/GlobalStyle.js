@@ -24,9 +24,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-   :root {
-     --toastify-toast-width: 450px;
-   }
+  :root {
+    --toastify-toast-width: 450px;
+  }
 
   html,
   body {
@@ -48,7 +48,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    // color: white;
     text-decoration: none;
 
     &:hover, &:active {
@@ -61,6 +60,21 @@ const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+
+  select {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+
+
+
 `;
 
 export default GlobalStyle;

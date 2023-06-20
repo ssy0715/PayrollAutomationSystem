@@ -3,6 +3,7 @@ import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
 import { Header } from "../../components";
 import { DepartmentTable } from "../../components/Table/DepartmentTable";
+import NewDepartModal from "../../components/Modal/NewDepartModal";
 
 
 const SWrapper = styled.div`
@@ -118,6 +119,11 @@ const SCompanyTable = styled.div`
 
 const DepartmentManage = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
   <SWrapper>
     <Header />
@@ -132,10 +138,11 @@ const DepartmentManage = () => {
           <input size={50} placeholder="내용을 입력해주세요" />
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SNewButton>신규</SNewButton>
+            <SNewButton onClick={openModal}>신규</SNewButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
+          <NewDepartModal  isOpen={isModalOpen} closeModal={closeModal}/>
           <DepartmentTable/>
         </SCompanyTable>
       </SContentContainer>

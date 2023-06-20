@@ -188,6 +188,7 @@ const SBasicInfo = styled.div`
 
 
 const SPaymentInfo = styled(SBasicInfo)`
+  width: 100%;
 `
 
 
@@ -334,19 +335,50 @@ const SDeductionTotalTable = styled.div`
     tr:last-child > td {
       background-color: white;
     }
-`
-
+    `
+    
 const SDeductionContainer = styled(SPaymentContainer)`
 `
 const SDeductionInfo = styled(SPaymentInfo)`
+`
+const SDeductionInfoTable = styled(SPaymentInfoTable)`
 `
 const SAttendanceContainer = styled(SPaymentContainer)`
 `
 const SAttendanceInfo = styled(SPaymentInfo)`
 `
-const SAttendanceInfoTable = styled(SPaymentInfoTable)``
+const SAttendanceInfoTable = styled(SPaymentInfoTable)`
+  width: 90%;
+    
+  table {
+      width: 100%;
+  }
 
-const SDeductionInfoTable= styled(SPaymentInfoTable)``
+  td:nth-child(odd) { 
+    background-color: white;
+    text-align: right;
+  }
+
+`
+
+
+const SNoticeContainer = styled(SPaymentContainer)``
+
+const SNoticeInfo = styled(SPaymentInfo)``
+
+const SNoticeInfoTable = styled(SPaymentInfoTable)`
+
+input {
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  height: 8em;
+  padding: 1em;
+}
+
+`
+
+
 
 const PayrollManageTable = () => {
   const navigate = useNavigate();
@@ -732,18 +764,18 @@ const PayrollManageTable = () => {
                               </SAttendanceInfoTable>
                             </SAttendanceInfo>
                           </SAttendanceContainer>
-                          <SAttendanceContainer>
-                          <SAttendanceInfo>
+                          <SNoticeContainer>
+                          <SNoticeInfo>
                               <SDotContainer>
                                 <GoPrimitiveDot color = "#548AFF" />
                                 <div>공지사항</div>
                               </SDotContainer>
-                              <SAttendanceInfoTable>
+                              <SNoticeInfoTable>
                                 {/* 사이즈 변경필요 */}
                                 <input type="text" placeholder="내용을 입력해주세요"/>
-                              </SAttendanceInfoTable>
-                            </SAttendanceInfo>
-                          </SAttendanceContainer>
+                              </SNoticeInfoTable>
+                            </SNoticeInfo>
+                          </SNoticeContainer>
                   </TableContainer>
                 );
               };

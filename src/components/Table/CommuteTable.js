@@ -40,7 +40,7 @@ const TableContainer = styled.div`
   tr > td {
     text-align: center;
     font-size: 1em;
-    font-weight: 200;u
+    font-weight: 200;
     color: rgb(40, 40, 40);
     cursor: pointer;
     text-align: center;

@@ -43,13 +43,20 @@ const SContentHeader = styled.div`
 
   font-size: 1.2em;
 
-  & > input {
-    border: 1px solid ${({theme}) => theme.colors.black050}
+input {
+    border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 1em;
-    width: 5%;
+    width: 15%;
   
   }
+
+  select {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+  }
+
 `
 
 const SInputContainer = styled.div`
@@ -57,6 +64,7 @@ const SInputContainer = styled.div`
   width: 100%;
   min-width: 30%;
   gap: 1.1em;
+  
 
 `
 
@@ -94,21 +102,6 @@ const SSerchButton = styled.button`
 `
 
 const SOutButton = styled.button`
-  flex-wrap: wrap;
-  width: 80px;
-  height: 40px;
-  color: white;
-  font-size: 0.8em;
-  background-color: ${({theme}) => theme.colors.black110};
-  border-radius: 3px;
-  border: none;
-
-  &:hover{  
-    background-color : skyblue;
-  }
-
-`
-const SPrintButton = styled.button`
   flex-wrap: wrap;
   width: 80px;
   height: 40px;

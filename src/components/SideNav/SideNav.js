@@ -100,7 +100,7 @@ const SAccordionContent = styled.div`
   font-size: 0.9em; 
 `;
 
-const menuItems = [
+const managerMenuItems = [
   {
     title: "부서관리",
     content: ["부서정보"],
@@ -176,7 +176,7 @@ const menuItems = [
 ];
 
 
-const IconMapping = {
+const managerIconMapping = {
   0: RiGroup2Fill,
   1: RiUserSettingsLine,
   2: ImProfile,
@@ -201,14 +201,14 @@ const SideNav = () => {
   const location = useLocation();
 
   useEffect(() => {
-    parentRefs.current = parentRefs.current.slice(0, menuItems.length);
-    childRefs.current = childRefs.current.slice(0, menuItems.length);
-    setIsCollapse((prev) => prev.slice(0, menuItems.length));
+    parentRefs.current = parentRefs.current.slice(0, managerMenuItems.length);
+    childRefs.current = childRefs.current.slice(0, managerMenuItems.length);
+    setIsCollapse((prev) => prev.slice(0, managerMenuItems.length));
   }, []);
 
   useEffect(() => {
     const path = location.pathname;
-    const itemIndex = menuItems.findIndex((menuItem) =>
+    const itemIndex = managerMenuItems.findIndex((menuItem) =>
       menuItem.innerLink.includes(path)
     );
     if (itemIndex !== -1) {
@@ -243,11 +243,11 @@ const SideNav = () => {
   return (
     <SWrapper>
       <SMenuContainer>
-        {menuItems.map((menuItem, index) => (
+        {managerMenuItems.map((menuItem, index) => (
           <SAccordion key={index}>
             <SAccordionHeader onClick={() => handleOnClick(index)}>
               <IconWrapper>
-                {React.createElement(IconMapping[index], {
+                {React.createElement(managerIconMapping[index], {
                   style: { verticalAlign: "middle" },
                 })}
               </IconWrapper>
