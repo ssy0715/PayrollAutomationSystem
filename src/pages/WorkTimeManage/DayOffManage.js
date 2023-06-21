@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import { DayOffTable } from "../../components";
+import { DayOffTable, NewHolidayModal } from "../../components";
 import { Header } from "../../components";
 
 
@@ -139,6 +139,10 @@ const SCompanyTable = styled.div`
 `
 
 const DayOffManage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
 
   return (
   <SWrapper>
@@ -152,7 +156,8 @@ const DayOffManage = () => {
         <SContentHeader>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SNewButton>신규</SNewButton>
+            <SNewButton onClick={openModal}>신규</SNewButton>
+            <NewHolidayModal isOpen={isModalOpen} closeModal={closeModal}/>
             <SDeleteButton>삭제</SDeleteButton>
           </SButtonContainer>
         </SContentHeader>

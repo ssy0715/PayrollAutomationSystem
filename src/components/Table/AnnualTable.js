@@ -11,20 +11,24 @@ const TableContainer = styled.div`
   justify-content: flex-start;
 
   width: 90%;
-  height: 90%;
+  height: 100%;
 
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-align: left;
   line-height: 2.8;
   border-collapse: collaps;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: auto;
+  // overflow-y: hidden;
 
   margin: 20px 10px;
 
 
   table {
-
+    white-space: nowrap; 
+    word-break: keep-all;
+    width: 100%;
+    height: 100%;
+  
   }
 
   table tr:nth-child(even) {
@@ -81,7 +85,7 @@ const PaginationButton = styled.button`
   border: 0;
   border-radius: 5px;
   background-color: transparent;
-  font-size: 1.1em;
+  font-size: 1.7em;
   font-weight: 550;
   color:  ${({theme}) => theme.colors.blue090};
 `;

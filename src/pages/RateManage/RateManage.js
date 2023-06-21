@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import SideNav from "../../components/SideNav/SideNav";
 import { useState } from "react";
-import EmployeeListTable from "../../components/Table/EmployeeTable";
+import { RateManageTable } from "../../components";
 import { Header } from "../../components";
+import NewRateModal from "../../components/Modal/NewRateModal";
 
 
 const SWrapper = styled.div`
@@ -41,7 +42,7 @@ const SContentHeader = styled.div`
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 
-  font-size: 1.2em;
+  font-size: 1em;
 
 & > input {
   border: none;
@@ -147,6 +148,10 @@ const SCompanyTable = styled.div`
 
 const RateManage = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
   <SWrapper>
     <Header />
@@ -168,12 +173,13 @@ const RateManage = () => {
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SOutButton>신규</SOutButton>
+            <SOutButton onClick={openModal}>신규</SOutButton>
+            <NewRateModal isOpen={isModalOpen} closeModal={closeModal}/>
             <SPrintButton>삭제</SPrintButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <EmployeeListTable/>
+          <RateManageTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

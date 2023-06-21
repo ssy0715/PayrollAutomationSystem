@@ -1,3 +1,4 @@
+// 테이블 export
 export {default as IconInput} from "./IconInput/IconInput"
 export {default as Footer} from "./Footer/Footer"
 export {default as SideNav} from "./SideNav/SideNav"
@@ -23,3 +24,9 @@ export {default as CommuteDetailTable} from "./Table/CommuteDetailTable"
 export {default as DeviceManageTable} from "./Table/DeviceManageTable"
 export {default as WorkTimeTable} from "./Table/WorkTimeTable"
 export {default as PayrollManageTable} from "./Table/PayrollManageTable"
+export {default as RateManageTable} from "./Table/RateManageTable"
+
+// 모달 export
+export {default as NewDepartModal} from "./Modal/NewDepartModal"
+export {default as NewFamilyModal} from "./Modal/NewFamilyModal"
+export {default as NewHolidayModal} from "./Modal/NewHolidayModal"

@@ -92,7 +92,7 @@ const PaginationButton = styled.button`
   color:  ${({theme}) => theme.colors.blue090};
 `;
 
-const DayOffTable = () => {
+const RateManageTable = () => {
 
   const navigate = useNavigate();
 
@@ -117,9 +117,10 @@ const renderTableRows = () => {
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{<input type="checkbox"/>}</td>
-        <td>{"2020-01-24"}</td>
-        <td>{"설날"}</td>
-        <td>{"유급"}</td>
+        <td>{"지급"}</td>
+        <td>{"기본급"}</td>
+        <td>{"과세"}</td>
+        <td>{""}</td>
         <td>{""}</td>
       </tr>
     ));
@@ -163,10 +164,11 @@ const renderTableRows = () => {
         <thead>
           <tr>
             <th><input type="checkbox"/></th>
-            <th>날짜</th>
-            <th>휴일명</th>
             <th>구분</th>
-            <th>비고</th>
+            <th>항목명</th>
+            <th>과세여부</th>
+            <th>절사단위</th>
+            <th>사용여부</th>
           </tr>
         </thead>
         <tbody>
@@ -187,4 +189,4 @@ const renderTableRows = () => {
               };
 
 
-export default DayOffTable;
+export default RateManageTable;

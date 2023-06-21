@@ -32,7 +32,8 @@ const SContentHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 6%;
+  height: auto;
+  min-height: 6%;
   margin: 10px;
   padding: 10px 20px;
   gap: 10px;
@@ -128,7 +129,7 @@ const SCompanyTable = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 80%;
+  height: 100%;
   margin: 8px;
   gap: 10px;
   background-color: white;
