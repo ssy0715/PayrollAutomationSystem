@@ -104,73 +104,73 @@ const managerMenuItems = [
   {
     title: "부서관리",
     content: ["부서정보"],
-    innerLink: ["/home/depart"],
+    innerLink: ["/admin/depart"],
   },
   {
     title: "사원정보관리",
     content: ["사원정보"],
-    innerLink: ["/home/employee"],
+    innerLink: ["/admin/employee"],
   },
   {
     title: "직원명부",
     content: ["직원명부조회"],
-    innerLink: ["/home/employeelist"],
+    innerLink: ["/admin/employeelist"],
   },
   {
     title: "근태관리",
     content: ["출퇴근 확인 및 조회","근태조회","출퇴근관리"],
-    innerLink: ["/home/emplcommute","/home/attendance","/home/commute"],
+    innerLink: ["/admin/emplcommute","/admin/attendance","/admin/commute"],
   },
   {
     title: "연차사용내역",
     content: ["연차사용내역조회"],
-    innerLink: ["/home/annual"],
+    innerLink: ["/admin/annual"],
   },
   {
     title: "근로시간관리",
     content: ["기본근로시간관리","소정근로시간관리","휴일관리"],
-    innerLink: ["/home/defaultworktime","/home/fixworktime","/home/dayoff"],
+    innerLink: ["/admin/defaultworktime","/admin/fixworktime","/admin/dayoff"],
   },
   {
     title: "급여관리",
     content: ["급여관리"],
-    innerLink: ["/home/payrollmanage"],
+    innerLink: ["/admin/payrollmanage"],
   },
   {
     title: "급여항목 및 요율관리",
     content: ["보험료관리", "급여항목관리"],
-    innerLink: ["/home/premium","/home/ratemanage"],
+    innerLink: ["/admin/premium","/admin/ratemanage"],
   },
   {
     title: "급여대장",
     content: ["급여대장조회"],
-    innerLink: ["/home/payrollcheck"],
+    innerLink: ["/admin/payrollcheck"],
   },
   {
     title: "이체내역서",
     content: ["급여이체내역서"],
-    innerLink: ["/home/transferhistory"],
+    innerLink: ["/admin/transferhistory"],
   },
   {
     title: "출국만기보험내역",
     content: ["출국만기보험내역 조회"],
-    innerLink: ["/home/departins"],
+    innerLink: ["/admin/departins"],
   },
   {
     title: "퇴직연금내역",
     content: ["퇴직연금조회"],
-    innerLink: ["/home/retire"],
+    innerLink: ["/admin/retire"],
   },
   {
     title: "보험적취내역",
     content: ["보험적취내역"],
-    innerLink: ["/home/insurunce"],
+    innerLink: ["/admin/insurunce"],
   },
 
   {
     title: "기기관리",
     content: ["비콘단말기관리"],
-    innerLink: ["/home/device"],
+    innerLink: ["/admin/device"],
   },
 
 ];

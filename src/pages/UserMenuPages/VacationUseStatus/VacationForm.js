@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Header, SideNav } from "../../components";
-import DeviceDetailTable from "../../components/Table/DeviceDetailTable";
-
+import { Header, SideNav, EmployeeDetailTable, EmployeeDetailFamilyTable } from "../../../components";
+import { VacationFormTable } from "../../../components";
 
 
 const SWrapper = styled.div`
@@ -81,8 +80,7 @@ const SSaveBtn = styled.button`
 `
 
 
-
-const DeviceDetail = () => {
+const VacationForm = () => {
 
   const navigate = useNavigate();
 
@@ -92,18 +90,18 @@ const DeviceDetail = () => {
       <SContentWrapper>
         <SideNav />
         <SContentContainer>
-          <SCategory>비콘단말기 상세</SCategory>
+          <SCategory>휴가신청서 작성</SCategory>
           <SButtonContainer>
-            <SCancleBtn onClick={()=>navigate(`/admin/device`)}>취소</SCancleBtn>
-            <SSaveBtn onClick={()=>navigate(`/admin/device`)}>저장</SSaveBtn>
+            <SCancleBtn onClick={() => navigate(`/user/vacation`)}>취소</SCancleBtn>
+            <SSaveBtn>저장</SSaveBtn>
           </SButtonContainer>
-          <DeviceDetailTable />
+          <VacationFormTable />
         </SContentContainer>
       </SContentWrapper>
-    </SWrapper>    
+    </SWrapper>
 
   )
 
 }
 
-export default DeviceDetail;
+export default VacationForm;

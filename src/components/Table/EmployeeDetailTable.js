@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { GoPrimitiveDot } from "react-icons/go";
 import EmployeeDetailFamilyTable from "./EmployeeDetailFamilyTable";
 import NewFamilyModal from "../Modal/NewFamilyModal";
@@ -299,6 +300,10 @@ border: none;
 
 const EmployeeDetailTable = () => {
 
+  // user 경로인 경우 가족사항 조회 숨김
+  const location = useLocation();
+  const isUserPath = location.pathname.startsWith('/user');
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const openModal = () => setIsModalOpen(true);
@@ -526,6 +531,9 @@ const EmployeeDetailTable = () => {
           </tr>
         </table>
       </SForeignerInfo>
+      {/* user권한 페이지일경우 추가버튼 숨김 */}
+      {isUserPath ? null : (
+                <>
       <SFamilyInfo>
       <SCategoryContainer>
           <GoPrimitiveDot color = "#548AFF" />
@@ -536,6 +544,8 @@ const EmployeeDetailTable = () => {
           </div>
         </SCategoryContainer>
       </SFamilyInfo>
+      </>
+      )}
     </SWrapper>
   )
 }

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Header, SideNav } from "../../components";
-import DeviceDetailTable from "../../components/Table/DeviceDetailTable";
-
-
+import { Header, SideNav } from "../../../components";
+import EmployeeFamilyCheckTable from "../../../components/Table/EmployeeDetailFamilyTable"
+import {EmployeeDetailFamilyTable} from "../../../components";
 
 const SWrapper = styled.div`
   display: flex;
@@ -30,6 +29,7 @@ const SContentContainer = styled.div`
 
   padding: 30px;
   width: 100%;
+  height: 100%;
 
 `
 
@@ -47,6 +47,8 @@ const SButtonContainer = styled.div`
   min-width: 90%;
   justify-content: flex-end;
   gap: 10px;
+  padding: 
+
 `
 
 const SCancleBtn = styled.button`
@@ -82,7 +84,7 @@ const SSaveBtn = styled.button`
 
 
 
-const DeviceDetail = () => {
+const EmployeeFamilyCheck = () => {
 
   const navigate = useNavigate();
 
@@ -92,12 +94,13 @@ const DeviceDetail = () => {
       <SContentWrapper>
         <SideNav />
         <SContentContainer>
-          <SCategory>비콘단말기 상세</SCategory>
+          <SCategory>가족정보 조회</SCategory>
           <SButtonContainer>
-            <SCancleBtn onClick={()=>navigate(`/admin/device`)}>취소</SCancleBtn>
-            <SSaveBtn onClick={()=>navigate(`/admin/device`)}>저장</SSaveBtn>
+            <SCancleBtn onClick={()=>navigate(`/user/employeefamilycheck`)}>취소</SCancleBtn>
+            <SSaveBtn>저장</SSaveBtn>
           </SButtonContainer>
-          <DeviceDetailTable />
+          <EmployeeFamilyCheckTable/>
+          <EmployeeDetailFamilyTable/>
         </SContentContainer>
       </SContentWrapper>
     </SWrapper>    
@@ -106,4 +109,4 @@ const DeviceDetail = () => {
 
 }
 
-export default DeviceDetail;
+export default EmployeeFamilyCheck;

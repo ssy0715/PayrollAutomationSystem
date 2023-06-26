@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import SideNav from "../../components/SideNav/SideNav";
+import SideNav from "../../../components/SideNav/SideNav";
 import { useState } from "react";
-import { Header } from "../../components";
-import { DeviceManageTable } from "../../components";
-import { useNavigate } from "react-router-dom";
+import { VacationUseStatusTable } from "../../../components";
+import { Header } from "../../../components";
+import { GoPrimitiveDot } from "react-icons/go";
+
 
 const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
   width: 100%;
 `
 
@@ -44,28 +44,24 @@ const SContentHeader = styled.div`
 
   font-size: 1.2em;
 
-input {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 1em;
-    width: 15%;
-  
-  }
+& > input {
+  border: none;
+  font-size: 1em;
+  width: 5%;
 
-  select {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-
-  }
+}
 
 `
 
 const SInputContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: auto;
   min-width: 30%;
   gap: 1.1em;
-  
+
+  input {
+    width: 30%;
+  }
 
 `
 
@@ -117,23 +113,71 @@ const SOutButton = styled.button`
   }
 
 `
+const SPrintButton = styled.button`
+  flex-wrap: wrap;
+  width: 80px;
+  height: 40px;
+  color: white;
+  font-size: 0.8em;
+  background-color: ${({theme}) => theme.colors.black110};
+  border-radius: 3px;
+  border: none;
+
+  &:hover{  
+    background-color : skyblue;
+  }
+
+`
 
 const SCompanyTable = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
   height: 80%;
   margin: 10px;
+  padding: 2em 0;
   gap: 10px;
   background-color: white;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 `
 
-const DeviceManage = () => {
 
-  const navigate = useNavigate();
+const SCategoryContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2em;
+
+  h3 {
+    width: 10%;
+  }
+
+  div {
+    justify-content: space-evenly;
+  }
+
+  input {
+    border: none;
+    margin: 0.5em;
+    padding: 1px;
+    width: 40%;
+  }
+
+`
+const SEmployeeSearchContainer = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 0.5em;
+
+`
+
+
+const VacationUseStatus = () => {
 
   return (
   <SWrapper>
@@ -142,28 +186,44 @@ const DeviceManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>비콘단말기 관리</div>
+          <div>휴가 사용 현황</div>
         </SCategory>
         <SContentHeader>
           <SInputContainer>
-            <div>설치위치 : </div>
-            <input size={20} type="text" />
-            <div>모델명 : </div>
-            <input size={20} type="text" />
-            <div>상태 : </div>
-            <select size={1}>
-              <option value="1">사용</option>
-              <option value="2">미사용</option>
-            </select>
+            <div>검색일자 : </div>
+            <input type="month" />
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SOutButton onClick={()=>navigate(`/admin/device/devicedetail`)}>신규</SOutButton>
+            <SOutButton>내보내기</SOutButton>
+            <SPrintButton>인쇄</SPrintButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <DeviceManageTable/>
-        </SCompanyTable>
+          <SCategoryContainer>
+            <GoPrimitiveDot color = "#548AFF" />
+              <h3>개인정보</h3>
+              <SEmployeeSearchContainer>
+                <div>
+                  <span>사원번호:</span>
+                  <input type="text"></input>
+                </div>
+                <div>
+                  <span>사원명:</span>
+                  <input type="text"></input>
+                </div>
+                <div>
+                  <span>부서명:</span>
+                  <input type="text"></input>
+                </div>
+                <div>
+                  <span>직책</span>
+                  <input type="text"></input>
+                </div>
+              </SEmployeeSearchContainer>
+            </SCategoryContainer>
+            <VacationUseStatusTable/>
+          </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
   </SWrapper>
@@ -171,4 +231,4 @@ const DeviceManage = () => {
 
 }
 
-export default DeviceManage;
+export default VacationUseStatus;

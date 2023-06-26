@@ -26,6 +26,11 @@ export {default as WorkTimeTable} from "./Table/WorkTimeTable"
 export {default as PayrollManageTable} from "./Table/PayrollManageTable"
 export {default as RateManageTable} from "./Table/RateManageTable"
 
+//user메뉴 테이블
+export {default as VacationUseStatusTable} from "./Table/UserMenuTable/VacationUseStatusTable"
+export {default as VacationFormTable} from "./Table/UserMenuTable/VacationFormTable"
+
+
 // 모달 export
 export {default as NewDepartModal} from "./Modal/NewDepartModal"
 export {default as NewFamilyModal} from "./Modal/NewFamilyModal"

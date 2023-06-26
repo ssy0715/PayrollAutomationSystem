@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Header, SideNav } from "../../components";
-import DeviceDetailTable from "../../components/Table/DeviceDetailTable";
+import { Header, SideNav, EmployeeDetailTable, EmployeeDetailFamilyTable } from "../../../components";
 
 
 
@@ -82,7 +81,7 @@ const SSaveBtn = styled.button`
 
 
 
-const DeviceDetail = () => {
+const EmployeeInfoCheck = () => {
 
   const navigate = useNavigate();
 
@@ -92,12 +91,12 @@ const DeviceDetail = () => {
       <SContentWrapper>
         <SideNav />
         <SContentContainer>
-          <SCategory>비콘단말기 상세</SCategory>
+          <SCategory>사원정보 상세</SCategory>
           <SButtonContainer>
-            <SCancleBtn onClick={()=>navigate(`/admin/device`)}>취소</SCancleBtn>
-            <SSaveBtn onClick={()=>navigate(`/admin/device`)}>저장</SSaveBtn>
+            <SCancleBtn onClick={()=>navigate(`/home/employee`)}>취소</SCancleBtn>
+            <SSaveBtn>저장</SSaveBtn>
           </SButtonContainer>
-          <DeviceDetailTable />
+          <EmployeeDetailTable />
         </SContentContainer>
       </SContentWrapper>
     </SWrapper>    
@@ -106,4 +105,4 @@ const DeviceDetail = () => {
 
 }
 
-export default DeviceDetail;
+export default EmployeeInfoCheck;

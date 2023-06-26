@@ -24,6 +24,10 @@ import { Home,
   EmployeeDetail,
   CommuteDetail,
   DeviceDetail,
+  EmployeeFamilyCheck,
+  EmployeeInfoCheck,
+  VacationUseStatus,
+  VacationForm,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -33,35 +37,40 @@ function App() {
     <>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<SharedLayout />}> */}
             <Route index element={<Home />} />
+            {/* 관리자 권한 페이지 라우팅 */}
             <Route path="/login" element={<Login />} />
-            <Route path="/home/com" element={<CompanyManage />}/>
-            <Route path="/home/depart" element={<DepartmentManage />}/>
-            <Route path="/home/employee" element={<EmployeeManage />} />
-            <Route path="/home/employeelist" element={<EmployeeListManage />} />
-            <Route path="/home/annual" element={<AnnualManage />} />
-            <Route path="/home/attendance" element={<AttendanceManage />} />
-            <Route path="/home/defaultworktime" element={<WorkTimeManage />} />
-            <Route path="/home/payrollmanage" element={<PayrollManage />} />
-            <Route path="/home/payrollcheck" element={<PayrollCheck />} />
-            <Route path="/home/ratemanage" element={<RateManage />} />
-            <Route path="/home/transferhistory" element={<TransferHistory />} />
-            <Route path="/home/departins" element={<DepartureInsurance />} />
-            <Route path="/home/retire" element={<RetirePension />} />
-            <Route path="/home/insurunce" element={<InsuranceClaim />} />
-            <Route path="/home/device" element={<DeviceManage />} />
-            <Route path="/home/emplcommute" element={<EmployeeCommuteManage />} />
-            <Route path="/home/commute" element={<CommuteManage />} />
-            <Route path="/home/fixworktime" element={<FixedWorkTimeManage />} />
-            <Route path="/home/dayoff" element={<DayOffManage />} />
-            <Route path="/home/premium" element={<PremiumManage />} />
+            <Route path="/admin/com" element={<CompanyManage />}/>
+            <Route path="/admin/depart" element={<DepartmentManage />}/>
+            <Route path="/admin/employee" element={<EmployeeManage />} />
+            <Route path="/admin/employeelist" element={<EmployeeListManage />} />
+            <Route path="/admin/annual" element={<AnnualManage />} />
+            <Route path="/admin/attendance" element={<AttendanceManage />} />
+            <Route path="/admin/defaultworktime" element={<WorkTimeManage />} />
+            <Route path="/admin/payrollmanage" element={<PayrollManage />} />
+            <Route path="/admin/payrollcheck" element={<PayrollCheck />} />
+            <Route path="/admin/ratemanage" element={<RateManage />} />
+            <Route path="/admin/transferhistory" element={<TransferHistory />} />
+            <Route path="/admin/departins" element={<DepartureInsurance />} />
+            <Route path="/admin/retire" element={<RetirePension />} />
+            <Route path="/admin/insurunce" element={<InsuranceClaim />} />
+            <Route path="/admin/device" element={<DeviceManage />} />
+            <Route path="/admin/emplcommute" element={<EmployeeCommuteManage />} />
+            <Route path="/admin/commute" element={<CommuteManage />} />
+            <Route path="/admin/fixworktime" element={<FixedWorkTimeManage />} />
+            <Route path="/admin/dayoff" element={<DayOffManage />} />
+            <Route path="/admin/premium" element={<PremiumManage />} />
+            
+            <Route path="/admin/com/:companyId" element={<CompanyDetail />} />
+            <Route path="/admin/employee/employeedetail" element={<EmployeeDetail />} />
+            <Route path="/admin/commute/commutedetail" element={<CommuteDetail />} />
+            <Route path="/admin/device/devicedetail" element={<DeviceDetail />} />
 
-            <Route path="/home/com/:companyId" element={<CompanyDetail />} />
-            <Route path="/home/employee/employeedetail" element={<EmployeeDetail />} />
-            <Route path="/home/commute/commutedetail" element={<CommuteDetail />} />
-            <Route path="/home/device/devicedetail" element={<DeviceDetail />} />
-          {/* </Route> */}
+            {/* 사용자 권한 페이지 라우팅 */}
+            <Route path="/user/employeefamilycheck" element={<EmployeeFamilyCheck />} />
+            <Route path="/user/employeeinfocheck" element={<EmployeeInfoCheck />} />
+            <Route path="/user/vacation" element={<VacationUseStatus />} />
+            <Route path="/user/vacation/vacationform" element={<VacationForm />} />
         </Routes>
       </Router>
     </>

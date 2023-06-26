@@ -1,10 +1,11 @@
-import DepartmentManage from "./DepartmentManage/DepartmentManage"
+import { VacationForm } from "./UserMenuPages"
 
 export {default as Home} from "./Home/Home"
 export {default as Main} from "./Main/Main"
+export {default as Login} from "./Login/Login"
+// 관리자 메뉴 페이지
 export {default as CompanyManage} from "./CompanyManage/CompanyManage"
 export {default as CompanyDetail} from "./CompanyManage/CompanyDetail"
-export {default as Login} from "./Login/Login"
 export {default as DepartmentManage } from "./DepartmentManage/DepartmentManage"
 export {default as EmployeeListManage } from "./EmployeeListManage/EmployeeListManage"
 export {default as EmployeeManage } from "./EmployeeManage/EmployeeManage"
@@ -29,4 +30,8 @@ export {default as CommuteDetail } from "./CommuteManage/CommuteDetail"
 export {default as DeviceDetail } from "./DeviceManage/DeviceDetail"
 
 
-// export {default as EmploymentInsurance } from "./PremiumManage/EmploymentInsurance"
+// 유저메뉴 페이지
+export {default as EmployeeFamilyCheck } from "./UserMenuPages/EmployeeFamilyCheck/EmployeeFamilyCheck"
+export {default as EmployeeInfoCheck } from "./UserMenuPages/EmployeeInfoCheck/EmployeeInfoCheck"
+export {default as VacationUseStatus } from "./UserMenuPages/VacationUseStatus/VacationUseStatus"
+export {default as VacationForm } from "./UserMenuPages/VacationUseStatus/VacationForm"
