@@ -115,18 +115,27 @@ display: flex;
 flex-direction: column;
 
 
-height: 30%;
+height: 100%;
 
 
 table {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
-  
+  height: 50%;
 }
 
-& > td:first-child {
-  width: 25%;
+tr > td:first-child {
+  width: 8.3%;
+  vertical-align: middle;
+
+}
+
+input {
+  width: 100%;
+  height: 90%;
+  vertical-align: middle;
+
 }
 
 `
@@ -299,18 +308,18 @@ border: none;
 
 `
 
+const SVacationApply = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  gap: 7em;
+`
+
 
 
 const VacationFormTable = () => {
-
-  // user 경로인 경우 가족사항 조회 숨김
-  const location = useLocation();
-  const isUserPath = location.pathname.startsWith('/user');
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <SWrapper>
@@ -334,60 +343,58 @@ const VacationFormTable = () => {
           </tr>
         </table>
       </SCompanyInfo>
-      <SManagerInfo>
-        <SCategoryContainer>
-          <GoPrimitiveDot color = "#548AFF" />
-          <h3>휴가신청</h3>
-        </SCategoryContainer>
-        <table>
-          <tr>
-            <td>휴가 신청일</td>
-            <td><input type="date"/></td>
-            <td>휴가구분</td>
-            <td>
-              <select size={1}>
-                <option value={1}>유급</option>
-                <option value={2}>무급</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>휴가 시작일</td>
-            <td><input type="date"/></td>
-            <td>휴가 종료일</td>
-            <td><input type="date"/></td>
-          </tr>
-          <tr>
-            <td>휴가일수</td>
-            <td><input type="text"/></td>
-            <td>전일/반일</td>
-            <td>
-              <select size={1}>
-                <option value={1}>전일</option>
-                <option value={2}>반일</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>실제사용여부</td>
-            <td><input type="text"/></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </table>
-      </SManagerInfo>
-      <SContractInfo>
-        <SCategoryContainer>
-          <GoPrimitiveDot color = "#548AFF" />
-          <h3>부서정보</h3>
-        </SCategoryContainer>
-        <table>
-          <tr>
+      <SVacationApply>
+        <SManagerInfo>
+          <SCategoryContainer>
+            <GoPrimitiveDot color = "#548AFF" />
+            <h3>휴가신청</h3>
+          </SCategoryContainer>
+          <table>
+            <tr>
+              <td>휴가 신청일</td>
+              <td><input type="date"/></td>
+              <td>휴가구분</td>
+              <td>
+                <select size={1}>
+                  <option value={1}>유급</option>
+                  <option value={2}>무급</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>휴가 시작일</td>
+              <td><input type="date"/></td>
+              <td>휴가 종료일</td>
+              <td><input type="date"/></td>
+            </tr>
+            <tr>
+              <td>휴가일수</td>
+              <td><input type="text"/></td>
+              <td>전일/반일</td>
+              <td>
+                <select size={1}>
+                  <option value={1}>전일</option>
+                  <option value={2}>반일</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
               <td>실제사용여부</td>
               <td><input type="text"/></td>
-          </tr>
-        </table>
-      </SContractInfo>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </SManagerInfo>
+        <SContractInfo>
+          <table>
+            <tr>
+                <td>휴가사유</td>
+                <td><input type="text"/></td>
+            </tr>
+          </table>
+        </SContractInfo>
+      </SVacationApply>
     </SWrapper>
   )
 }

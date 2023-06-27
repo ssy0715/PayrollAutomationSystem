@@ -28,6 +28,9 @@ import { Home,
   EmployeeInfoCheck,
   VacationUseStatus,
   VacationForm,
+  BusinessTripStatus,
+  BusinessTripForm,
+  AnnualUseStatus,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -69,8 +72,15 @@ function App() {
             {/* 사용자 권한 페이지 라우팅 */}
             <Route path="/user/employeefamilycheck" element={<EmployeeFamilyCheck />} />
             <Route path="/user/employeeinfocheck" element={<EmployeeInfoCheck />} />
+            
             <Route path="/user/vacation" element={<VacationUseStatus />} />
             <Route path="/user/vacation/vacationform" element={<VacationForm />} />
+            
+            <Route path="/user/businesstrip" element={<BusinessTripStatus />} />
+            <Route path="/user/businesstrip/businesstripform" element={<BusinessTripForm />} />
+        
+            <Route path="/user/annualusestatus" element={<AnnualUseStatus />} />
+        
         </Routes>
       </Router>
     </>

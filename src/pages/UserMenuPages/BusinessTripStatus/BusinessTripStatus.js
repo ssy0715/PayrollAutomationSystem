@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../../components/SideNav/SideNav";
 import { useState } from "react";
-import { VacationUseStatusTable } from "../../../components";
+import { BusinessTripStatusTable } from "../../../components";
 import { Header } from "../../../components";
 import { GoPrimitiveDot } from "react-icons/go";
 
@@ -177,7 +177,7 @@ const SEmployeeSearchContainer = styled.div`
 `
 
 
-const VacationUseStatus = () => {
+const BusinessTripStatus = () => {
 
   return (
   <SWrapper>
@@ -186,12 +186,14 @@ const VacationUseStatus = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>휴가 사용 현황</div>
+          <div>출장 사용 현황</div>
         </SCategory>
         <SContentHeader>
           <SInputContainer>
-            <div>검색일자 : </div>
-            <input type="month" />
+            <div>출장일자 : </div>
+            <input type="date" />
+            <span>~</span>
+            <input type="date" />
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
@@ -222,7 +224,7 @@ const VacationUseStatus = () => {
                 </div>
               </SEmployeeSearchContainer>
             </SCategoryContainer>
-            <VacationUseStatusTable/>
+            <BusinessTripStatusTable/>
           </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
@@ -231,4 +233,4 @@ const VacationUseStatus = () => {
 
 }
 
-export default VacationUseStatus;
+export default BusinessTripStatus;

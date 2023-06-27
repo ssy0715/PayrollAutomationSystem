@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SideNav from "../../../components/SideNav/SideNav";
 import { useState } from "react";
-import { VacationUseStatusTable } from "../../../components";
+import { AnnualUseStatusTable } from "../../../components";
 import { Header } from "../../../components";
 import { GoPrimitiveDot } from "react-icons/go";
 
@@ -177,7 +177,7 @@ const SEmployeeSearchContainer = styled.div`
 `
 
 
-const VacationUseStatus = () => {
+const AnnualUseStatus = () => {
 
   return (
   <SWrapper>
@@ -186,16 +186,15 @@ const VacationUseStatus = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>휴가 사용 현황</div>
+          <div>연차사용내역 조회</div>
         </SCategory>
         <SContentHeader>
           <SInputContainer>
-            <div>검색일자 : </div>
+            <div>기준년도 : </div>
             <input type="month" />
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
-            <SOutButton>내보내기</SOutButton>
             <SPrintButton>인쇄</SPrintButton>
           </SButtonContainer>
         </SContentHeader>
@@ -220,9 +219,13 @@ const VacationUseStatus = () => {
                   <span>직책:</span>
                   <input type="text"></input>
                 </div>
+                <div>
+                  <span>입사일:</span>
+                  <input type="date"></input>
+                </div>
               </SEmployeeSearchContainer>
             </SCategoryContainer>
-            <VacationUseStatusTable/>
+            <AnnualUseStatusTable/>
           </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>
@@ -231,4 +234,4 @@ const VacationUseStatus = () => {
 
 }
 
-export default VacationUseStatus;
+export default AnnualUseStatus;

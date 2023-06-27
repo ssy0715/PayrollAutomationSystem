@@ -85,7 +85,7 @@ const SPrintBtn = styled(SSaveBtn)`
 
 
 
-const VacationForm = () => {
+const BusinessTripForm = () => {
 
   const navigate = useNavigate();
 
@@ -95,11 +95,11 @@ const VacationForm = () => {
       <SContentWrapper>
         <SideNav />
         <SContentContainer>
-          <SCategory>휴가신청서 작성</SCategory>
+          <SCategory>출장신청서 작성</SCategory>
           <SButtonContainer>
-            <SCancleBtn onClick={() => navigate(`/user/businesstripform`)}>취소</SCancleBtn>
-            <SSaveBtn onClick={() => navigate(`/user/businesstripform`)}>저장</SSaveBtn>
-            <SPrintBtn onClick={() => navigate(`/user/businesstripform`)}>인쇄</SPrintBtn>
+            <SCancleBtn onClick={() => navigate(`/user/businesstrip/businesstripform`)}>취소</SCancleBtn>
+            <SSaveBtn onClick={() => navigate(`/user/businesstrip/businesstripform`)}>저장</SSaveBtn>
+            <SPrintBtn onClick={() => navigate(`/user/businesstrip/businesstripform`)}>인쇄</SPrintBtn>
           </SButtonContainer>
           <BusinessTripFormTable />
         </SContentContainer>
@@ -110,4 +110,4 @@ const VacationForm = () => {
 
 }
 
-export default VacationForm;
+export default BusinessTripForm;
