@@ -236,7 +236,6 @@ const SBasicInfoTable= styled.div`
   
   td {
     vertical-align: middle;
-
   }
 
   td:nth-child(odd) { 
@@ -349,6 +348,10 @@ const SAttendanceInfo = styled(SPaymentInfo)`
 `
 const SAttendanceInfoTable = styled(SPaymentInfoTable)`
   width: 90%;
+
+  td {
+    
+  }
     
   table {
       width: 100%;
@@ -577,8 +580,6 @@ const PayrollManageTable = () => {
                         </SPaymentInfo>
                           <SSpecialAllowInfo>
                             <SDotContainer>
-                              <GoPrimitiveDot color = "#548AFF" />
-                              <div>지급내역</div>
                             </SDotContainer>
                             <SSpecialAllowInfoTable>
                             <SDotContainer>
