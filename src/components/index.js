@@ -33,6 +33,11 @@ export {default as BusinessTripFormTable} from "./Table/UserMenuTable/BusinessTr
 export {default as BusinessTripStatusTable} from "./Table/UserMenuTable/BusinessTripStatusTable"
 export {default as AnnualUseStatusTable} from "./Table/UserMenuTable/AnnualUseStatusTable"
 
+//operator메뉴 테이블
+export {default as OperatorInfoTable} from "./Table/OperatorMenuTable/OperatorInfoTable"
+
+
+
 // 모달 export
 export {default as NewDepartModal} from "./Modal/NewDepartModal"
 export {default as NewFamilyModal} from "./Modal/NewFamilyModal"

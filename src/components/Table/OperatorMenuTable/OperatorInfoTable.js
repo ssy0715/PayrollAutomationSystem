@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CompanyDummy } from "../../pages/CompanyManage/CompanyDummy";
+import { CompanyDummy } from "../../../pages/CompanyManage/CompanyDummy";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 import { BsFillCalculatorFill } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
@@ -383,7 +383,7 @@ input {
 
 
 
-const PayrollManageTable = () => {
+const OperatorInfoTable = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -773,5 +773,5 @@ const PayrollManageTable = () => {
               };
 
 
-export default PayrollManageTable;
+export default OperatorInfoTable;
 
