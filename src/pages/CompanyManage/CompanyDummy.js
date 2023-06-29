@@ -20,7 +20,7 @@ export const CompanyDummy = [
     company: {
       companyId: 2,
       companyName: "(주)포어링크",
-      manager: "홍길동",
+      manager: "김사원",
       contact: "010-1234-1234",
       email: "abc@abcd.co.kr",
       companyAddress: "서울시 동작구 흑석동 123-123",

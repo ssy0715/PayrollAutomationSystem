@@ -102,9 +102,9 @@ const PaginationButton = styled.button`
   `
 
 const SButtonContainer = styled.div`
-display: flex;
+  display: flex;
   justify-content: flex-end;
-  gap: 1em;
+  padding-bottom: 1em;
 
 `
 
@@ -180,16 +180,10 @@ const SBasicInfo = styled.div`
   align-items: flex-start;
   width: 100%;
 
-  margin: 1em 0;
+  margin: 2em 0;
   gap: 0.5em;
 `
   
-
-
-
-const SPaymentInfo = styled(SBasicInfo)`
-  width: 100%;
-`
 
 
 const SDotContainer = styled.div`
@@ -209,12 +203,15 @@ const SDotContainer = styled.div`
 
 `
 
-
 const SBasicInfoTable= styled.div`
   width: 90%;
   padding: 20px 0px;
   border-top: 3px solid #ccc;
 
+  input {
+    width: 90%;
+    font-size: 1em;
+  }
 
 
   table {
@@ -261,153 +258,57 @@ input {
 }
 `
 
-const SPaymentInfoTable = styled(SBasicInfoTable)`
-
-td {
-  border: 2px solid #ccc;
-}
-
-td:nth-child(odd) { 
-  background-color: white;
-  text-align: right;
-  
-}
-
-`
-
-const SSpecialAllowInfo = styled(SBasicInfo)`
-`
-
-const SSpecialAllowInfoTable = styled(SPaymentInfoTable)`
-`
-
-const SPaymentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-`
-
-const SSpecialAllowTotalTable = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  border-top: none;
-
-  input {
-    border: none;
-  }
-
-  table {
-    border: 2px solid #ccc;
-    // width: 50%;
-  }
-
-  td:first-child {
-    text-align: right;
-    background-color: ${({theme}) => theme.colors.blue010};
-  }
-`
-
-
-const SDeductionTotalTable = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  border-top: none;
-
-  input {
-    border: none;
-  }
-
-    th {
-      text-align: center;
-      width: 50%;
-    } 
-    td { 
-      width: 50%;
-      border: 2px solid #ccc;
-    }
-
-    tr:first-child > td {
-      background-color: ${({theme}) => theme.colors.blue010};
-    }
-
-    tr:last-child > td {
-      background-color: white;
-    }
-    `
-    
-const SDeductionContainer = styled(SPaymentContainer)`
-`
-const SDeductionInfo = styled(SPaymentInfo)`
-`
-const SDeductionInfoTable = styled(SPaymentInfoTable)`
-`
-const SAttendanceContainer = styled(SPaymentContainer)`
-`
-const SAttendanceInfo = styled(SPaymentInfo)`
-`
-const SAttendanceInfoTable = styled(SPaymentInfoTable)`
-  width: 90%;
-
-  td {
-    
-  }
-    
-  table {
-      width: 100%;
-  }
-
-  td:nth-child(odd) { 
-    background-color: white;
-    text-align: right;
-  }
-
-`
-
-
-const SNoticeContainer = styled(SPaymentContainer)``
-
-const SNoticeInfo = styled(SPaymentInfo)``
-
-const SNoticeInfoTable = styled(SPaymentInfoTable)`
-
-input {
-  border: 2px solid #ccc;
-  border-radius: 3px;
-  width: 100%;
-  height: 8em;
-  padding: 1em;
-}
-
-`
-
-
-
 const OperatorInfoTable = () => {
   const navigate = useNavigate();
 
+  // 선택한 운영자 데이터를 운영자 상세에 보여주는 코드
+  const [selectedOperatorData, setSelectedOperatorData] = useState(null);
+  const handleOperatorClick = (companyData) => {
+    setSelectedOperatorData(companyData);
+  };
+
+  
+  
+  // 페이지네이션
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = CompanyDummy.slice(indexOfFirstItem, indexOfLastItem);
-
-  // const [tests, setTest] = useState( [] );
-  // useEffect( () =>{
-  //   fetch('http://127.0.0.1:8000/test/')
-  //     .then( res => res.json())
-  //     .then( data => console.log(data))
-  // }, [])
-
+  
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  
+  // api통신 예시
+  // const [tests, setTest] = useState( [] );
+  // useEffect( () =>{
+    //   fetch('http://127.0.0.1:8000/test/')
+    //     .then( res => res.json())
+  //     .then( data => console.log(data))
+  // }, [])
+  
+  const [companyData, setOperatorData] = useState(CompanyDummy); // 초기 회사 데이터
+
+  const handleSave = () => {
+    // 수정된 데이터를 상위 테이블 데이터에 반영
+    const updatedOperatorData = companyData.map((company) => {
+      if (company.company.companyId === selectedOperatorData.company.companyId) {
+        return selectedOperatorData;
+      }
+      return company;
+    });
+    setOperatorData(updatedOperatorData);
+    setSelectedOperatorData(null); // 선택된 데이터 초기화
+  };
+
 
   const renderTableRows = () => {
+    const currentItems = companyData.slice(indexOfFirstItem, indexOfLastItem);
     return currentItems.map((companydata) => (
       <tr key={companydata.company.companyId}>
         <td>{companydata.company.companyId}</td>
-        <td onClick={() => navigate(`./commutedetail`)}>{companydata.company.manager}</td>
+        <td onClick={() => handleOperatorClick(companydata)}>{companydata.company.manager}</td>
         <td>{"남자"}</td>
         <td>{"관리부"}</td>
         <td>{""}</td>
@@ -418,7 +319,7 @@ const OperatorInfoTable = () => {
   };
 
   const renderPaginationButtons = () => {
-    const pageNumbers = Math.ceil(CompanyDummy.length / itemsPerPage);
+    const pageNumbers = Math.ceil(companyData.length / itemsPerPage);
 
     const handlePrevPage = () => {
       if (currentPage > 1) {
@@ -455,12 +356,12 @@ const OperatorInfoTable = () => {
         <thead>
           <tr>
             <th>번호</th>
-            <th>부서명</th>
-            <th>사원번호</th>
-            <th>사원명</th>
+            <th>운영자명</th>
             <th>직책</th>
-            <th>입사일</th>
-            <th>급여종류</th>
+            <th>운영자ID</th>
+            <th>상태</th>
+            <th>등록일시</th>
+            <th>변경일시</th>
           </tr>
         </thead>
         <tbody>
@@ -476,298 +377,55 @@ const OperatorInfoTable = () => {
                     <PaginationContainer>
                       {renderPaginationButtons()}
                     </PaginationContainer>
-                    <SCalcContainer>
-                      <div>
-                        <span>자동계산</span>
-                        <span>
-                          <select size={1}>
-                            <option value={"false"}>false</option>
-                            <option value={"true"}>true</option>
-                          </select>
-                        </span>
-                        </div>
-                        <SButtonContainer>
-                          <SCalcButton>
-                            <BsFillCalculatorFill />
-                            <div>계산하기</div>
-                          </SCalcButton>
-                          <SSaveButton>저장하기</SSaveButton>
-                          <SPrintButton>인쇄</SPrintButton>
-                        </SButtonContainer>
-                    </SCalcContainer>
+                    {selectedOperatorData && (
                         <SBasicInfo>
                           <SDotContainer>
                             <GoPrimitiveDot color = "#548AFF" />
-                            <div>기본정보</div>
+                            <div>운영자 상세</div>
                           </SDotContainer>
                           <SBasicInfoTable>
+                            <SButtonContainer>
+                              <SSaveButton onClick={handleSave}>저장</SSaveButton>
+                            </SButtonContainer>
                             <table>
+                            <tbody>
                               <tr>
-                                <td>급여기준액</td>
-                                <td><input type="text"/></td>
-                                <td>성명</td>
-                                <td><input type="text"/></td>
-                                <td>입사일자</td>
-                                <td><input type="date"/></td>
-                              </tr>
-                              <tr>
-                                <td>부서명</td>
-                                <td><input type="text"/></td>
+                                <td>운영자명</td>
+                                <td>                   
+                                <input
+                                  type="text"
+                                  value={selectedOperatorData?.company.manager || ""}
+                                  onChange={(e) =>
+                                    setSelectedOperatorData((prevData) => ({
+                                      ...prevData,
+                                      company: {
+                                        ...prevData.company,
+                                        manager: e.target.value,
+                                      },
+                                    }))
+                                  }
+                                />
+                                </td>
                                 <td>직책</td>
                                 <td><input type="text"/></td>
-                                <td>계좌번호</td>
+                              </tr>
+                              <tr>
+                                <td>운영자ID</td>
+                                <td><input type="date"/></td>
+                                <td>상태</td>
                                 <td><input type="text"/></td>
                               </tr>
+                              <tr>
+                                <td>등록일시</td>
+                                <td><input type="text"/></td>
+                                <td>변경일시</td>
+                                <td><input type="text"/></td>
+                              </tr>
+                              </tbody>
                             </table>
                           </SBasicInfoTable>
                         </SBasicInfo>
-                        <SPaymentContainer>
-                        <SPaymentInfo>
-                          <SDotContainer>
-                            <GoPrimitiveDot color = "#548AFF" />
-                            <div>지급내역</div>
-                          </SDotContainer>
-                          <SPaymentInfoTable>
-                          <SDotContainer>
-                            <div>공통항목</div>
-                          </SDotContainer>
-                            <table>
-                              <tr>
-                                <th>기본급</th>
-                                <th>야간근로수당</th>
-                                <th>연장근로수당</th>
-                                <th>연차수당</th>
-                                <th>인센티브(성과금)</th>
-                                <th>휴일근로수당</th>
-                                <th rowSpan={2}>공통항목 합계액</th>
-                              </tr>
-                              <tr>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                              </tr>
-                              <tr>
-                                <th>휴일연장수당</th>
-                                <th>야간근로수당</th>
-                                <th>연장근로수당</th>
-                                <th>연차수당</th>
-                                <th>인센티브(성과금)</th>
-                                <th>휴일근로수당</th>
-                                <th rowSpan={2}></th>
-                              </tr>
-                              <tr>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                              </tr>
-                            </table>
-                          </SPaymentInfoTable>
-                        </SPaymentInfo>
-                          <SSpecialAllowInfo>
-                            <SDotContainer>
-                            </SDotContainer>
-                            <SSpecialAllowInfoTable>
-                            <SDotContainer>
-                              <div>특별수당</div>
-                            </SDotContainer>
-                              <table>
-                                <tr>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th rowSpan={2}>특별수당 합계액</th>
-                                </tr>
-                                <tr>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                </tr>
-                                <tr>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th rowSpan={2}></th>
-                                </tr>
-                                <tr>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                </tr>
-                              </table>
-                            </SSpecialAllowInfoTable>
-                          </SSpecialAllowInfo>
-                          <SSpecialAllowTotalTable>
-                            <div>
-                            <table>
-                              <tr>
-                                <td>급여기준액</td>
-                                <td><input type="text"/></td>
-                              </tr>
-                            </table>
-                            </div>
-                          </SSpecialAllowTotalTable>
-                        </SPaymentContainer>
-                        {/* 공제내역시작 */}
-                        <SDeductionContainer>
-                        <SDeductionInfo>
-                            <SDotContainer>
-                              <GoPrimitiveDot color = "#548AFF" />
-                              <div>공제내역</div>
-                            </SDotContainer>
-                            <SDeductionInfoTable>
-                              <table>
-                                <tr>
-                                  <th>건강보험</th>
-                                  <th>건강보험정산</th>
-                                  <th>고용보험</th>
-                                  <th>국민연금</th>
-                                  <th>근로소득세(소득세)</th>
-                                  <th>장기요양보험</th>
-                                  <th rowSpan={2}>공제합계액(B)</th>
-                                </tr>
-                                <tr>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                </tr>
-                                <tr>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th rowSpan={2}></th>
-                                </tr>
-                                <tr>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                  <td><input type="text"/></td>
-                                </tr>
-                              </table>
-                            </SDeductionInfoTable>
-                          </SDeductionInfo>
-                          <SDeductionTotalTable>
-                            <div>
-                            <table>
-                              <tr>
-                                <td>과세기준</td>
-                                <td>차인지급액 (A - B)</td>
-                              </tr>
-                              <tr>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                              </tr>
-                            </table>
-                            </div>
-                          </SDeductionTotalTable>
-                        </SDeductionContainer>
-                        {/* 근태내역 시작 */}
-                        <SAttendanceContainer>
-                          <SAttendanceInfo>
-                              <SDotContainer>
-                                <GoPrimitiveDot color = "#548AFF" />
-                                <div>근태내역</div>
-                              </SDotContainer>
-                              <SAttendanceInfoTable>
-                                <table>
-                                  <tr>
-                                    <th>건강보험</th>
-                                    <th>건강보험정산</th>
-                                    <th>고용보험</th>
-                                    <th>국민연금</th>
-                                    <th>근로소득세(소득세)</th>
-                                    <th>장기요양보험</th>
-                                    <th></th>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                  </tr>
-                                  <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                    <td><input type="text"/></td>
-                                  </tr>
-                                </table>
-                              </SAttendanceInfoTable>
-                            </SAttendanceInfo>
-                          </SAttendanceContainer>
-                          {/* 아래부터 컴포넌트명 변경필요 */}
-                          <SAttendanceContainer>
-                          <SAttendanceInfo>
-                              <SDotContainer>
-                                <GoPrimitiveDot color = "#548AFF" />
-                                <div>연차내역</div>
-                              </SDotContainer>
-                              <SAttendanceInfoTable>
-                                <table>
-                                  <tr>
-                                    <td>총발생</td>
-                                    <td></td>
-                                    <td>총사용</td>
-                                    <td></td>
-                                    <td>적치</td>
-                                    <td></td>
-                                  </tr>
-                                </table>
-                              </SAttendanceInfoTable>
-                            </SAttendanceInfo>
-                          </SAttendanceContainer>
-                          <SNoticeContainer>
-                          <SNoticeInfo>
-                              <SDotContainer>
-                                <GoPrimitiveDot color = "#548AFF" />
-                                <div>공지사항</div>
-                              </SDotContainer>
-                              <SNoticeInfoTable>
-                                {/* 사이즈 변경필요 */}
-                                <input type="text" placeholder="내용을 입력해주세요"/>
-                              </SNoticeInfoTable>
-                            </SNoticeInfo>
-                          </SNoticeContainer>
+                        )}
                   </TableContainer>
                 );
               };

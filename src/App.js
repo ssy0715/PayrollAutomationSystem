@@ -31,6 +31,7 @@ import { Home,
   BusinessTripStatus,
   BusinessTripForm,
   AnnualUseStatus,
+  OperatorInfoManage,
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -41,7 +42,7 @@ function App() {
       <Router>
         <Routes>
             <Route index element={<Home />} />
-            {/* 관리자 권한 페이지 라우팅 */}
+            {/* (관리자 권한) admin 메뉴 페이지 라우팅 */}
             <Route path="/login" element={<Login />} />
             <Route path="/admin/com" element={<CompanyManage />}/>
             <Route path="/admin/depart" element={<DepartmentManage />}/>
@@ -69,7 +70,7 @@ function App() {
             <Route path="/admin/commute/commutedetail" element={<CommuteDetail />} />
             <Route path="/admin/device/devicedetail" element={<DeviceDetail />} />
 
-            {/* 사용자 권한 페이지 라우팅 */}
+            {/* (사용자 권한) user메뉴 페이지 라우팅 */}
             <Route path="/user/employeefamilycheck" element={<EmployeeFamilyCheck />} />
             <Route path="/user/employeeinfocheck" element={<EmployeeInfoCheck />} />
             
@@ -80,6 +81,9 @@ function App() {
             <Route path="/user/businesstrip/businesstripform" element={<BusinessTripForm />} />
         
             <Route path="/user/annualusestatus" element={<AnnualUseStatus />} />
+
+            {/* (운영자 권한) operator메뉴 페이지 라우팅 */}
+            <Route path="/operator/operatorinfo" element={<OperatorInfoManage />} />
         
         </Routes>
       </Router>

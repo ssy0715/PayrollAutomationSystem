@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import SideNav from "../../components/SideNav/SideNav";
+import SideNav from "../../../components/SideNav/SideNav";
 import { useState } from "react";
-import PayrollManageTable from "../../components/Table/PayrollManageTable";
-import { Header } from "../../components";
+import OperatorInfoTable from "../../../components/Table/OperatorMenuTable/OperatorInfoTable";
+import { Header } from "../../../components";
 
 
 const SWrapper = styled.div`
@@ -119,9 +119,16 @@ const SCompanyTable = styled.div`
 
 const SInputContainer = styled.div`
   display: flex;
-  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
   min-width: 30%;
   gap: 1.1em;
+
+  input {
+    width: 8em;
+    padding: 0.5em;
+  }
 `
 
 const OperatorInfoManage = () => {
@@ -133,32 +140,20 @@ const OperatorInfoManage = () => {
       <SideNav />
       <SContentContainer>
         <SCategory>
-          <div>급여 관리</div>
+          <div>운영자 정보</div>
         </SCategory>
         <SContentHeader>
         <SInputContainer>
-          <div>검색기간 : </div>
-            <input size={200} type="date" />
-          <div>부서명 : </div>
-          <select size={1}>
-            <option value="1">생산부</option>
-            <option value="2">인사부</option>
-            <option value="3">관리부</option>
-            <option value="4">경영부</option>
-          </select>
-          <div>급여종류 : </div>
-          <select size={1}>
-            <option value="1">월급여</option>
-            <option value="2">시급여</option>
-            <option value="3">일급여</option>
-          </select>
+          <div>운영자명 : </div>
+            <input size={200} type="text" />
           </SInputContainer>
           <SButtonContainer>
             <SSerchButton>검색</SSerchButton>
+            <SNewButton>신규</SNewButton>
           </SButtonContainer>
         </SContentHeader>
         <SCompanyTable>
-          <PayrollManageTable/>
+          <OperatorInfoTable/>
         </SCompanyTable>
       </SContentContainer>
     </SContentWrapper>

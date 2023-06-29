@@ -3,7 +3,7 @@ import { VacationForm } from "./UserMenuPages"
 export {default as Home} from "./Home/Home"
 export {default as Main} from "./Main/Main"
 export {default as Login} from "./Login/Login"
-// 관리자 메뉴 페이지
+// admin 관리자 메뉴 페이지
 export {default as CompanyManage} from "./CompanyManage/CompanyManage"
 export {default as CompanyDetail} from "./CompanyManage/CompanyDetail"
 export {default as DepartmentManage } from "./DepartmentManage/DepartmentManage"
@@ -30,7 +30,7 @@ export {default as CommuteDetail } from "./CommuteManage/CommuteDetail"
 export {default as DeviceDetail } from "./DeviceManage/DeviceDetail"
 
 
-// 유저메뉴 페이지
+// user 유저메뉴 페이지
 export {default as EmployeeFamilyCheck } from "./UserMenuPages/EmployeeFamilyCheck/EmployeeFamilyCheck"
 export {default as EmployeeInfoCheck } from "./UserMenuPages/EmployeeInfoCheck/EmployeeInfoCheck"
 export {default as VacationUseStatus } from "./UserMenuPages/VacationUseStatus/VacationUseStatus"
@@ -38,3 +38,7 @@ export {default as VacationForm } from "./UserMenuPages/VacationUseStatus/Vacati
 export {default as BusinessTripStatus } from "./UserMenuPages/BusinessTripStatus/BusinessTripStatus"
 export {default as BusinessTripForm } from "./UserMenuPages/BusinessTripStatus/BusinessTripForm"
 export {default as AnnualUseStatus } from "./UserMenuPages/AnnualUseStatus/AnnualUseStatus"
+
+// operator 운영자메뉴 페이지
+export {default as OperatorInfoManage } from "./OperatorMenuPage/OperatorInfoManage/OperatorInfoManage"
+
