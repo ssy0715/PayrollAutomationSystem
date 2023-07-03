@@ -175,6 +175,36 @@ const managerMenuItems = [
 
 ];
 
+const userMenuItems = [
+  {
+    title: "사원정보",
+    content: ["사원정보조회", "가족정보조회"],
+    innerLink: ["/user/employeeinfocheck", "/user/employeefamilycheck"],
+  },
+  {
+    title: "근태관리",
+    content: ["휴가사용현황", "출장사용현황"],
+    innerLink: ["/user/vacation", "/user/businesstrip"],
+  },
+
+];
+
+
+const operatorMenuItems = [
+  {
+    title: "회사관리",
+    content: ["회사정보"],
+    innerLink: ["/operator/com"],
+  },
+  {
+    title: "운영자관리",
+    content: [ "운영자정보"],
+    innerLink: ["/operator/operatorinfo"],
+  },
+
+];
+
+
 
 const managerIconMapping = {
   0: RiGroup2Fill,
@@ -193,8 +223,33 @@ const managerIconMapping = {
   13: TbDeviceMobileVibration,
 };
 
+const userIconMapping = {
+  0: RiUserSettingsLine,
+  1: RiGroup2Fill,
+  2: ImProfile,
+};
 
-const SideNav = () => {
+const operatorIconMapping = {
+  0: RiGroup2Fill,
+  1: RiUserSettingsLine,
+};
+
+
+
+const SideNav = ({ userRole }) => {
+//권한에 따라 매핑 아이템 달라짐
+  const menuItems =
+    userRole === "user" ? userMenuItems : userRole === "operator" ? operatorMenuItems : managerMenuItems;
+  const iconMapping =
+    userRole === "user"
+      ? userIconMapping
+      : userRole === "operator"
+      ? operatorIconMapping
+      : managerIconMapping;
+
+
+
+
   const parentRefs = useRef([]);
   const childRefs = useRef([]);
   const [isCollapse, setIsCollapse] = useState([]);
